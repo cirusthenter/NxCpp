@@ -18,6 +18,13 @@ NxCpp needs:
 - C++17 or later.
 - Google Test for testing the code.
 
+### NxCpp
+
+```
+git clone git@github.com:cirusthenter/NxCpp.git
+cd NxCpp
+```
+
 ### Google Test
 
 ```
