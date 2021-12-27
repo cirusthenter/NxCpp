@@ -3,12 +3,6 @@
 
 using namespace std;
 
-class NotImplementedException : public std::logic_error {
-public:
-    NotImplementedException()
-        : std::logic_error("Function not yet implemented") {};
-};
-
 class NxCppException : public exception {
     /*
     Base class for exceptions in NxCpp
@@ -107,6 +101,12 @@ class ExceededMaxIterations : NxCppException {
      This may occur, for example, in an algorithm that computes
      progressively better approximations to a value but exceeds an
      iteration bound specified by the user.
+    */
+};
+
+class NotImplementedException {
+    /*
+    Exception for yet implemented functions
     */
 };
 
