@@ -20,6 +20,10 @@ typedef unordered_map<Node, AdjDict> OuterAdjDict;
 typedef pair<Node, Node> Edge;
 typedef unordered_map<Edge, AttrDict, pair_hash> EdgeDict;
 typedef unordered_map<Node, double> NodeDoubleDict;
+typedef unordered_map<Node, unordered_map<Node, double>> NodeNodeDoubleDict;
+typedef unordered_map<Node, Node> NodeNode;
+typedef unordered_map<int, vector<int>> Paths;
+typedef unordered_map<Node, Paths> NodePaths;
 
 ostream& operator<<(ostream& os, const AttrDict& map)
 {
