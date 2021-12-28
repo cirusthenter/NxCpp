@@ -15,12 +15,13 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-
-
 include(GoogleTest)
+
+# The following add_executable-target_link_libraries-gtest_discover_test loop should be changed
 add_executable(test_graph classes/tests/test_graph.cc)
 target_link_libraries(test_graph gtest_main)
 gtest_discover_tests(test_graph)
+
 add_executable(test_digraph classes/tests/test_digraph.cc)
 target_link_libraries(test_digraph gtest_main)
 gtest_discover_tests(test_digraph)
