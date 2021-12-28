@@ -1,7 +1,7 @@
 #pragma once
-#include "../exception.hpp"
-#include "../utils/operator.hpp"
-#include "../utils/pair_hash.hpp"
+#include "../exception.h"
+#include "../utils/operator.h"
+#include "../utils/pair_hash.h"
 #include <functional>
 #include <iostream>
 #include <iterator>

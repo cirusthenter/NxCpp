@@ -1,4 +1,4 @@
-#include "graph.hpp"
+#include "graph.h"
 
 class DiGraph : public Graph {
     OuterAdjDict pred;
