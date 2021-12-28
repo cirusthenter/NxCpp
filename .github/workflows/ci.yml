@@ -23,6 +23,7 @@ jobs:
             cmake ..
             make
             sudo make install
-            cd ../../
     - name: run test
-      run: make test_graph
+      run: |
+        cd ../../
+        make test_graph
