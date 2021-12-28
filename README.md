@@ -42,6 +42,8 @@ brew install cmake
 
 ### Google Test
 
+This project is under C/C++ unit test using [Google Test](https://github.com/google/googletest) with continuous integration provided by [GitHub Actions](https://docs.github.com/actions). Install Google Test as follows (See also https://github.com/google/googletest/blob/main/googletest/README.md):
+
 ```
 cd src
 git clone https://github.com/google/googletest.git -b release-1.11.0
@@ -62,7 +64,7 @@ sudo cp lib/*.a /usr/local/lib/
 cd ../../
 ```
 
-See also: https://github.com/google/googletest/blob/main/googletest/README.md
+
 
 ## Copyright Information
 
