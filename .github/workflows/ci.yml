@@ -16,14 +16,9 @@ jobs:
     - name: download GoogleTest and build test
       run: |
             cd src
-            git clone https://github.com/google/googletest.git -b release-1.11.0
-            cd googletest
-            mkdir build
-            cd build
-            cmake ..
-            make
-            sudo make install
+            cmake -S . -B build
+            cmake --build build
     - name: run test
       run: |
-        cd src
-        make test_graph
+        cd src/build
+        ctest
