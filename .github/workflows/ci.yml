@@ -25,5 +25,5 @@ jobs:
             sudo make install
     - name: run test
       run: |
-        cd ../../
+        cd src
         make test_graph
