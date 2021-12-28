@@ -1,5 +1,5 @@
-#include "../digraph.hpp"
-#include "test_graph.cpp"
+#include "../digraph.h"
+#include "test_graph.cc"
 #include "gtest/gtest.h"
 
 class TestDiGraph : public TestGraph {

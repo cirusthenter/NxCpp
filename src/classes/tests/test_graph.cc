@@ -1,4 +1,5 @@
-#include "../graph.hpp"
+#pragma once
+#include "../graph.h"
 #include "gtest/gtest.h"
 
 class TestGraph : public ::testing::Test {

@@ -1,4 +1,4 @@
-#include "../../classes/digraph.hpp"
+#include "../../classes/digraph.h"
 #include <float.h>
 #include <unordered_map>
 #include <vector>

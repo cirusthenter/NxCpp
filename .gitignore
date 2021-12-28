@@ -38,3 +38,4 @@ a.out
 src/test
 src/googletest
 .DS_Store
+build
