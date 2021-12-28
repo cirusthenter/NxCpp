@@ -1,7 +1,7 @@
 CC = g++
 CFLAGS = -std=c++17
 
-.PHONY: test_graph test_digraph
+.PHONY: test test2 test3
 
 run: main
 	./main
@@ -15,12 +15,17 @@ main: main.o
 main.o: main.cpp
 	$(CC) $(CFLAGS) -c main.cpp
 
-test_graph:
-	$(CC) $(CFLAGS) -o test_graph -pthread -lgtest_main -lgtest classes/tests/test_graph.cpp
-	./test_graph
-	rm test_graph
+test:
+	$(CC) $(CFLAGS) -o test -pthread -lgtest_main -lgtest algorithms/shortest_paths/tests/test_unweighted.cc
+	./test
+	rm test
 
-test_digraph:
-	$(CC) $(CFLAGS) -o test_digraph -pthread -lgtest_main -lgtest classes/tests/test_digraph.cpp
-	./test_digraph
-	rm test_digraph
+test2:
+	$(CC) $(CFLAGS) -o test2 -pthread -lgtest_main -lgtest generators/tests/test_lattice.cc
+	./test2
+	rm test2
+
+test3:
+	$(CC) $(CFLAGS) -o test3 -pthread -lgtest_main -lgtest classes/tests/test_function.cc
+	./test3
+	rm test3

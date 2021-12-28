@@ -1,6 +1,6 @@
 #include "../digraph.h"
 #include "test_graph.cc"
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
 class TestDiGraph : public TestGraph {
 protected:
@@ -38,6 +38,14 @@ protected:
         p3.add_edge(1, 2);
     }
 };
+
+TEST_F(TestDiGraph, TestHasEdge)
+{
+    DiGraph g = p3;
+    ASSERT_TRUE(g.has_successor(0, 1));
+    ASSERT_FALSE(g.has_successor(1, 0));
+    ASSERT_FALSE(g.has_successor(0, -1));
+}
 
 TEST_F(TestDiGraph, TestHasSuccessor)
 {
