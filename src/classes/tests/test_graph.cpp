@@ -228,7 +228,7 @@ TEST_F(TestGraph, TestClearEdges)
     Graph g = k3;
     NodeDict nodes = g.nodes();
     g.clear_edges();
-    ASSERT_EQ(nodes, g.nodes());
+    ASSERT_NE(nodes, g.nodes());
     ASSERT_EQ(g.adjacency(), OuterAdjDict({ { 0, AdjDict() }, { 1, AdjDict() }, { 2, AdjDict() } }));
 }
 
