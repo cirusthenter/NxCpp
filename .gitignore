@@ -35,7 +35,8 @@ src/graph/
 .vscode
 src/main.cpp
 a.out
-src/test
-src/googletest
 .DS_Store
 build
+test
+test2
+test3

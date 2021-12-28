@@ -1,3 +1,4 @@
+#pragma once
 #include "graph.h"
 
 class DiGraph : public Graph {
@@ -84,6 +85,13 @@ public:
             throw NxCppError();
         succ[u].erase(v);
         pred[v].erase(u);
+    }
+
+    bool has_edge(int u, int v)
+    {
+        if (succ.find(u) != succ.end() && succ[u].find(v) != succ[u].end())
+            return true;
+        return false;
     }
 
     void remove_edges_from()

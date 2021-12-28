@@ -1,6 +1,6 @@
 #pragma once
 #include "../graph.h"
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
 class TestGraph : public ::testing::Test {
 protected:

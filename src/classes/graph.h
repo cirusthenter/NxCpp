@@ -282,6 +282,8 @@ public:
             throw NxCppError();
 
         if (weight == "") {
+            if (has_edge(n, n))
+                return adj[n].size() + 1;
             return adj[n].size();
         }
 

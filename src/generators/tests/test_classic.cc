@@ -1,0 +1,50 @@
+#include "../classic.h"
+#include <gtest/gtest.h>
+
+class TestGraph : public ::testing::Test {
+};
+
+TEST_F(TestGraph, TestCycleGraph)
+{
+    Graph g = cycle_graph(4);
+    EdgeDict expected({
+        { pair<int, int>(0, 1), AttrDict() },
+        { pair<int, int>(0, 3), AttrDict() },
+        { pair<int, int>(1, 2), AttrDict() },
+        { pair<int, int>(2, 3), AttrDict() },
+    });
+    ASSERT_EQ(g.edges(), expected);
+}
+
+TEST_F(TestGraph, TestCycleDiGraph)
+{
+    DiGraph g = cycle_digraph(4);
+    EdgeDict expected({
+        { pair<int, int>(0, 1), AttrDict() },
+        { pair<int, int>(1, 2), AttrDict() },
+        { pair<int, int>(2, 3), AttrDict() },
+        { pair<int, int>(3, 0), AttrDict() },
+    });
+    ASSERT_EQ(g.edges(), expected);
+    ASSERT_FALSE(g.has_edge(2, 1));
+    ASSERT_TRUE(g.has_edge(1, 2));
+    ASSERT_TRUE(g.is_directed());
+}
+
+TEST_F(TestGraph, TestEmptyGraph)
+{
+    Graph g = empty_graph();
+    ASSERT_EQ(g.number_of_nodes(), 0);
+    g = empty_graph(42);
+    ASSERT_EQ(g.number_of_nodes(), 42);
+    ASSERT_EQ(g.number_of_edges(), 0);
+}
+
+TEST_F(TestGraph, TestEmptyDiGraph)
+{
+    DiGraph g = empty_digraph();
+    ASSERT_EQ(g.number_of_nodes(), 0);
+    g = empty_digraph(42);
+    ASSERT_EQ(g.number_of_nodes(), 42);
+    ASSERT_EQ(g.number_of_edges(), 0);
+}

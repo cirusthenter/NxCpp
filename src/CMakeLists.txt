@@ -25,3 +25,19 @@ gtest_discover_tests(test_graph)
 add_executable(test_digraph classes/tests/test_digraph.cc)
 target_link_libraries(test_digraph gtest_main)
 gtest_discover_tests(test_digraph)
+
+add_executable(test_function classes/tests/test_function.cc)
+target_link_libraries(test_function gtest_main)
+gtest_discover_tests(test_function)
+
+add_executable(test_classic generators/tests/test_classic.cc)
+target_link_libraries(test_classic gtest_main)
+gtest_discover_tests(test_classic)
+
+add_executable(test_lattice generators/tests/test_lattice.cc)
+target_link_libraries(test_lattice gtest_main)
+gtest_discover_tests(test_lattice)
+
+add_executable(test_shortest_paths_unweighted algorithms/shortest_paths/tests/test_unweighted.cc)
+target_link_libraries(test_shortest_paths_unweighted gtest_main)
+gtest_discover_tests(test_shortest_paths_unweighted)
