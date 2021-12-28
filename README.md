@@ -17,7 +17,7 @@ NxCpp needs:
 
 - C++17 or later.
 - Google Test for testing the code.
-- CMake for Google Test Installation.
+- CMake for Google Test.
 
 ### NxCpp
 
@@ -46,25 +46,11 @@ This project is under C/C++ unit test using [Google Test](https://github.com/goo
 
 ```
 cd src
-git clone https://github.com/google/googletest.git -b release-1.11.0
-cd googletest        # Main directory of the cloned repository.
-mkdir build          # Create a directory to hold the build output.
-cd build
-cmake ..             # Generate native build scripts for GoogleTest.
-```
-
-If you are useing Mac:
-
-```
-make
-sudo make install    # Install in /usr/local/ by default
-sudo cp -r ../googlemock/include/gmock /usr/local/include/.
-sudo cp -r ../googletest/include/gtest /usr/local/include/.
-sudo cp lib/*.a /usr/local/lib/
+cmake -S . -B build
+cmake --build build
+cd build && ctest
 cd ../../
 ```
-
-
 
 ## Copyright Information
 
