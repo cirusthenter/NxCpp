@@ -21,7 +21,7 @@ test:
 	rm test
 
 test2:
-	$(CC) $(CFLAGS) -o test2 -pthread -lgtest_main -lgtest generators/tests/test_lattice.cc
+	$(CC) $(CFLAGS) -o test2 -pthread -lgtest_main -lgtest generators/tests/test_classic.cc
 	./test2
 	rm test2
 

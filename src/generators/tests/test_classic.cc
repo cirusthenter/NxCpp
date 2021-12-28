@@ -64,5 +64,5 @@ TEST_F(TestGraph, TestPathGraph)
 
     p = path_graph(10);
     // ASSERT_EQ(is_connected(p));
-    ASSERT_EQ(p.number_of_edges(), 0);
+    ASSERT_EQ(p.number_of_edges(), 9);
 }
