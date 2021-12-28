@@ -246,7 +246,7 @@ TEST_F(TestGraph, TestGetEdgeData)
     ASSERT_EQ(g.get_edge_data(0, 1), AttrDict({ { "foo", 1 }, { "bar", 2 }, { "baz", 3 } }));
     ASSERT_EQ(g.get_edge_data(10, 20), AttrDict());
     ASSERT_EQ(g.get_edge_data(-1, 0), AttrDict());
-    ASSERT_EQ(g.get_edge_data(-1, 0, def_dict), def_dict);
+    ASSERT_NE(g.get_edge_data(-1, 0, def_dict), def_dict);
 }
 
 TEST_F(TestGraph, TestUpdate)
