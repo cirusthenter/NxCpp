@@ -22,7 +22,7 @@ jobs:
             cd build
             cmake ..
             make
-            make install
+            sudo make install
             cd ../../
     - name: run test
       run: make test_graph
