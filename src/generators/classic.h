@@ -42,3 +42,12 @@ DiGraph empty_digraph(int n = 0)
         g.add_node(i);
     return g;
 }
+
+Graph path_graph(int n)
+{
+    Graph g = empty_graph(n);
+    for (int i = 0; i < n - 1; ++i) {
+        g.add_edge(i, i + 1);
+    }
+    return g;
+}

@@ -48,3 +48,21 @@ TEST_F(TestGraph, TestEmptyDiGraph)
     ASSERT_EQ(g.number_of_nodes(), 42);
     ASSERT_EQ(g.number_of_edges(), 0);
 }
+
+TEST_F(TestGraph, TestPathGraph)
+{
+    // This has to be updated
+    Graph p;
+
+    p = path_graph(0);
+    ASSERT_EQ(p.number_of_nodes(), 0);
+    ASSERT_EQ(p.number_of_edges(), 0);
+
+    p = path_graph(1);
+    ASSERT_EQ(p.number_of_nodes(), 1);
+    ASSERT_EQ(p.number_of_edges(), 0);
+
+    p = path_graph(10);
+    // ASSERT_EQ(is_connected(p));
+    ASSERT_EQ(p.number_of_edges(), 0);
+}
