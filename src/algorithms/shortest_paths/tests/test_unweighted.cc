@@ -22,7 +22,7 @@ void validate_grid_path(int r, int c, int s, int t, vector<int> p)
         ASSERT_LE(0, u.second);
         ASSERT_LT(u.second, c);
     }
-    for (int i = 0; i < p.size() - 1; ++i) {
+    for (int i = 0; i < (int) p.size() - 1; ++i) {
         int v0 = abs(new_p[i].first - new_p[i + 1].first);
         int v1 = abs(new_p[i].second - new_p[i + 1].second);
         bool eval = (v0 == 0 && v1 == 1) || (v0 == 1 && v1 == 0);
