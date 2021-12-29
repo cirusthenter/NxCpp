@@ -1,6 +1,38 @@
 #pragma once
 #include "classic.h"
 
+Graph complete_graph(int n)
+{
+    Graph g = empty_graph(n);
+    if (n < 2)
+        return g;
+    for (auto [u, attr] : g.nodes()) {
+        for (auto [v, attr] : g.nodes()) {
+            if (u == v)
+                continue;
+            g.add_edge(u, v);
+        }
+    }
+
+    return g;
+}
+
+DiGraph complete_directed_graph(int n)
+{
+    DiGraph g = empty_digraph(n);
+    if (n < 2)
+        return g;
+    for (auto [u, attr] : g.nodes()) {
+        for (auto [v, attr] : g.nodes()) {
+            if (u == v)
+                continue;
+            g.add_edge(u, v);
+        }
+    }
+
+    return g;
+}
+
 Graph cycle_graph(int n)
 {
     // This funciton assumes empty_graph(n) returns graph with node 0..n-1

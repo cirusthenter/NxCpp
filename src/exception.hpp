@@ -110,6 +110,12 @@ class NotImplementedException {
     */
 };
 
+class IndexOutOfRangeException {
+    /*
+    Exception for OutOfRange
+    */
+};
+
 class PowerIterationFailedConvergence : ExceededMaxIterations {
     /*
     Raised when the power iteration method fails to converge within a
