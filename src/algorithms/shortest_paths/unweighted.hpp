@@ -41,7 +41,7 @@ NodeDoubleDict _single_shortest_path_length(OuterAdjDict adj, unordered_map<int,
                 found.push_back(v);
             }
         }
-        if (seen.size() == n)
+        if (seen.size() == (unsigned int) n)
             return seen;
         for (auto v : found)
             for (auto [n, nbr] : adj[v])
