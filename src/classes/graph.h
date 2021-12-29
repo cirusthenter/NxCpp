@@ -24,6 +24,7 @@ typedef unordered_map<Node, unordered_map<Node, double>> NodeNodeDoubleDict;
 typedef unordered_map<Node, Node> NodeNode;
 typedef unordered_map<int, vector<int>> Paths;
 typedef unordered_map<Node, Paths> NodePaths;
+typedef unordered_map<Node, int> NodeInt;
 
 inline ostream& operator<<(ostream& os, const AttrDict& map);
 inline ostream& operator<<(ostream& os, const NodeDict& map);

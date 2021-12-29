@@ -12,6 +12,9 @@ fast:
 	cd build && ctest
 
 manual_test:
-	$(CC) $(CFLAGS) -o manual_test -pthread -lgtest_main -lgtest algorithms/shortest_paths/tests/test_unweighted.cc
+	# $(CC) $(CFLAGS) -o manual_test -pthread -lgtest_main -lgtest generators/tests/test_classic.cc
+	# $(CC) $(CFLAGS) -o manual_test -pthread -lgtest_main -lgtest algorithms/tests/test_cluster.cc
+	# $(CC) $(CFLAGS) -o manual_test -pthread -lgtest_main -lgtest algorithms/tests/test_clique.cc
+	$(CC) $(CFLAGS) -o manual_test -pthread -lgtest_main -lgtest algorithms/isomorphism/tests/test_isomorphism.cc
 	./manual_test
 	rm manual_test

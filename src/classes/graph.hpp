@@ -277,6 +277,15 @@ public:
         return sum_weight;
     }
 
+    NodeDoubleDict degree(string weight = "")
+    {
+        NodeDoubleDict d;
+        for (auto [n, attr] : node)
+            d[n] = degree(n, weight);
+
+        return d;
+    }
+
     void clear()
     {
         adj.clear();

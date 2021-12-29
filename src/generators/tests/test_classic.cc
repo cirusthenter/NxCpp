@@ -4,6 +4,26 @@
 class TestClassic : public ::testing::Test {
 };
 
+TEST_F(TestClassic, TestCompleteGraph)
+{
+    int cases[] = { 0, 1, 3, 5 };
+    for (int m : cases) {
+        Graph g = complete_graph(m);
+        ASSERT_EQ(g.number_of_nodes(), m);
+        ASSERT_EQ(g.number_of_edges(), m * (m - 1) / 2);
+    }
+}
+
+TEST_F(TestClassic, TestCompleteDirectedGraph)
+{
+    int cases[] = { 0, 1, 3, 5 };
+    for (int m : cases) {
+        DiGraph g = complete_directed_graph(m);
+        ASSERT_EQ(g.number_of_nodes(), m);
+        ASSERT_EQ(g.number_of_edges(), m * (m - 1));
+    }
+}
+
 TEST_F(TestClassic, TestCycleGraph)
 {
     Graph g = cycle_graph(4);

@@ -308,6 +308,11 @@ public:
         return true;
     }
 
+    int number_of_edges()
+    {
+        return edge_size();
+    }
+
     Graph to_undirected()
     {
         throw NotImplementedException();

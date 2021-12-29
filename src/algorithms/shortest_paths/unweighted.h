@@ -1,5 +1,6 @@
 #pragma once
 #include "../../classes/digraph.hpp"
+#include "../../classes/graph.hpp"
 #include <float.h>
 #include <unordered_map>
 #include <vector>

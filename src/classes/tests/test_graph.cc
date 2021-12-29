@@ -103,6 +103,12 @@ TEST_F(TestGraph, TestDegree)
     ASSERT_THROW(g.degree(-1), NxCppError);
 }
 
+TEST_F(TestGraph, TestDegreeDict)
+{
+    Graph g = k3;
+    ASSERT_EQ(g.degree(), NodeDoubleDict({ { 0, 2 }, { 1, 2 }, { 2, 2 } }));
+}
+
 TEST_F(TestGraph, TestEdgeSize)
 {
     Graph g = k3;
