@@ -2,17 +2,17 @@
 #include "../lattice.cc"
 #include <gtest/gtest.h>
 
-class TestGraph : public ::testing::Test {
+class TestLattice : public ::testing::Test {
 };
 
-TEST_F(TestGraph, TestNumberOfVertices)
+TEST_F(TestLattice, TestNumberOfVertices)
 {
     int m = 5, n = 6;
     Graph g = grid_2d_graph(m, n);
     ASSERT_EQ(g.size(), m * n);
 }
 
-TEST_F(TestGraph, TestDegreeDistribution)
+TEST_F(TestLattice, TestDegreeDistribution)
 {
     int m = 5, n = 6;
     Graph g = grid_2d_graph(m, n);
@@ -20,7 +20,7 @@ TEST_F(TestGraph, TestDegreeDistribution)
     ASSERT_EQ(degree_histogram(g), expected_histogram);
 }
 
-TEST_F(TestGraph, TestDirected)
+TEST_F(TestLattice, TestDirected)
 {
     int m = 5, n = 6;
     Graph g = grid_2d_graph(m, n);

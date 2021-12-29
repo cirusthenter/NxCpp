@@ -13,12 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: download GoogleTest and build test
-      run: |
-            cd src
-            cmake -S . -B build
-            cmake --build build
     - name: run test
       run: |
-        cd src/build
-        ctest
+        cd src
+        bazel test --test_output=all //:all_test

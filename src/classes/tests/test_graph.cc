@@ -30,8 +30,8 @@ TEST_F(TestGraph, TestContains)
 {
     Graph g = k3;
     NodeDict nodes = g.nodes();
-    ASSERT_NE(nodes.find(0), nodes.end());
-    ASSERT_EQ(nodes.find(4), nodes.end());
+    ASSERT_TRUE(in(nodes, 0));
+    ASSERT_FALSE(in(nodes, 4));
 }
 
 TEST_F(TestGraph, TestOrder)

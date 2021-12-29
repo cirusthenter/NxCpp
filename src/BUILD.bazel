@@ -1,5 +1,12 @@
 cc_library(
   name = "graph_files",
+  srcs = glob(
+    include = [
+      "*.cc",
+      "*/*.cc",
+      "*/*/*.cc",
+    ],
+  ),
   hdrs =  glob(
     include = [
       "*.cc",
@@ -15,6 +22,7 @@ cc_library(
       "*/*/test_*.cc",
       "*/*/*/test_*.cc",],
   ),
+  copts = ["-std=c++17"],
   visibility=["//visibility:public"],
   deps = [
     "@com_google_googletest//:gtest_main",

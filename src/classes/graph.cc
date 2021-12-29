@@ -317,7 +317,6 @@ public:
 
     int number_of_edges()
     {
-        int sum_edges = 0;
         return edge_size();
     }
 

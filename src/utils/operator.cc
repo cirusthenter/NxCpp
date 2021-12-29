@@ -34,7 +34,7 @@ bool in(std::unordered_map<K, V> m, K k)
 }
 
 template <typename K, typename V>
-ostream& operator<<(ostream& os, const unordered_map<K, V>& map)
+std::ostream& operator<<(std::ostream& os, const std::unordered_map<K, V>& map)
 {
     if (map.size() <= 0)
         return os << "{}";
