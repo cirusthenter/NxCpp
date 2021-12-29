@@ -1,4 +1,3 @@
-#pragma once
 #include "unweighted.h"
 
 NodeDoubleDict single_source_shortest_path_length(Graph g, int source, double cutoff = DBL_MAX)

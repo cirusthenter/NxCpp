@@ -30,7 +30,7 @@ void validate_grid_path(int r, int c, int s, int t, vector<int> p)
     }
 }
 
-class TestGraph : public ::testing::Test {
+class TestUnweighted : public ::testing::Test {
 protected:
     Graph grid;
     Graph cycle;
@@ -44,7 +44,7 @@ protected:
     }
 };
 
-TEST_F(TestGraph, TestBidirectionalShortestPath)
+TEST_F(TestUnweighted, TestBidirectionalShortestPath)
 {
     ASSERT_EQ(bidirectional_shortest_path(cycle, 0, 3), vector<int>({ 0, 1, 2, 3 }));
     ASSERT_EQ(bidirectional_shortest_path(cycle, 0, 4), vector<int>({ 0, 6, 5, 4 }));
@@ -52,7 +52,7 @@ TEST_F(TestGraph, TestBidirectionalShortestPath)
     ASSERT_EQ(bidirectional_shortest_path_directed(directed_cycle, 0, 3), vector<int>({ 0, 1, 2, 3 }));
 }
 
-TEST_F(TestGraph, TestSingleSourceShortestPathLength)
+TEST_F(TestUnweighted, TestSingleSourceShortestPathLength)
 {
     NodeDoubleDict expected({
         { 0, 0 },
@@ -78,7 +78,7 @@ TEST_F(TestGraph, TestSingleSourceShortestPathLength)
     ASSERT_EQ(expected, lengths);
 }
 
-TEST_F(TestGraph, TestSingleTargetShortestPathLength)
+TEST_F(TestUnweighted, TestSingleTargetShortestPathLength)
 {
     NodeDoubleDict expected({
         { 0, 0 },
@@ -104,7 +104,7 @@ TEST_F(TestGraph, TestSingleTargetShortestPathLength)
     ASSERT_EQ(expected, lengths);
 }
 
-TEST_F(TestGraph, TestAllPairsShortestPathLength)
+TEST_F(TestUnweighted, TestAllPairsShortestPathLength)
 {
     NodeNodeDoubleDict all_pairs;
     NodeDoubleDict expected;
@@ -123,7 +123,7 @@ TEST_F(TestGraph, TestAllPairsShortestPathLength)
     ASSERT_EQ(all_pairs[0][15], 6);
 }
 
-TEST_F(TestGraph, TestSingleSourceShortestPath)
+TEST_F(TestUnweighted, TestSingleSourceShortestPath)
 {
     Paths p;
     p = single_source_shortest_path_directed(directed_cycle, 3);
@@ -134,7 +134,7 @@ TEST_F(TestGraph, TestSingleSourceShortestPath)
     ASSERT_EQ(p, Paths({ { 0, vector<int>({ 0 }) } }));
 }
 
-TEST_F(TestGraph, TestSingleTargetShortestPath)
+TEST_F(TestUnweighted, TestSingleTargetShortestPath)
 {
     Paths p;
     p = single_target_shortest_path_directed(directed_cycle, 0);
@@ -145,7 +145,7 @@ TEST_F(TestGraph, TestSingleTargetShortestPath)
     ASSERT_EQ(p, Paths({ { 0, vector<int>({ 0 }) } }));
 }
 
-TEST_F(TestGraph, TestAllPairsShortestPath)
+TEST_F(TestUnweighted, TestAllPairsShortestPath)
 {
     NodePaths p;
     p = all_pairs_shortest_path(cycle);
@@ -154,7 +154,7 @@ TEST_F(TestGraph, TestAllPairsShortestPath)
     validate_grid_path(4, 4, 0, 11, p[0][11]);
 }
 
-TEST_F(TestGraph, TestPredecessorPath)
+TEST_F(TestUnweighted, TestPredecessorPath)
 {
     Graph g = path_graph(4);
     Paths p {
@@ -167,7 +167,7 @@ TEST_F(TestGraph, TestPredecessorPath)
     ASSERT_EQ(predecessor_with_target(g, 0, 3), vector<int>({ 2 }));
 }
 
-TEST_F(TestGraph, TestPredecessorCycle)
+TEST_F(TestUnweighted, TestPredecessorCycle)
 {
     Graph g = cycle_graph(4);
     auto pred = predecessor(g, 0);
@@ -178,7 +178,7 @@ TEST_F(TestGraph, TestPredecessorCycle)
     ASSERT_EQ(pred[3], vector<int>({ 0 }));
 }
 
-TEST_F(TestGraph, TestPredecessorCutoff)
+TEST_F(TestUnweighted, TestPredecessorCutoff)
 {
     Graph g = path_graph(4);
     bool eval = true;
@@ -189,7 +189,7 @@ TEST_F(TestGraph, TestPredecessorCutoff)
     ASSERT_TRUE(eval);
 }
 
-TEST_F(TestGraph, TestPredecessorTarget)
+TEST_F(TestUnweighted, TestPredecessorTarget)
 {
     Graph g = path_graph(4);
     auto p = predecessor_with_target(g, 0, 3);

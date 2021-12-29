@@ -1,7 +1,7 @@
 #include "../function.cc"
 #include <gtest/gtest.h>
 
-class TestGraph : public ::testing::Test {
+class TestFunction : public ::testing::Test {
 protected:
     Graph g;
     unordered_map<int, int> gdegree;
@@ -25,7 +25,7 @@ protected:
     }
 };
 
-TEST_F(TestGraph, TestDegreeHistogram)
+TEST_F(TestFunction, TestDegreeHistogram)
 {
     NodeDict nodes = g.nodes();
     vector<int> expected({ 1, 1, 1, 1, 1 });

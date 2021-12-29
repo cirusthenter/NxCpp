@@ -1,10 +1,10 @@
 #include "../classic.cc"
 #include <gtest/gtest.h>
 
-class TestGraph : public ::testing::Test {
+class TestClassic : public ::testing::Test {
 };
 
-TEST_F(TestGraph, TestCycleGraph)
+TEST_F(TestClassic, TestCycleGraph)
 {
     Graph g = cycle_graph(4);
     EdgeDict expected({
@@ -16,7 +16,7 @@ TEST_F(TestGraph, TestCycleGraph)
     ASSERT_EQ(g.edges(), expected);
 }
 
-TEST_F(TestGraph, TestCycleDiGraph)
+TEST_F(TestClassic, TestCycleDiGraph)
 {
     DiGraph g = cycle_digraph(4);
     EdgeDict expected({
@@ -31,7 +31,7 @@ TEST_F(TestGraph, TestCycleDiGraph)
     ASSERT_TRUE(g.is_directed());
 }
 
-TEST_F(TestGraph, TestEmptyGraph)
+TEST_F(TestClassic, TestEmptyGraph)
 {
     Graph g = empty_graph();
     ASSERT_EQ(g.number_of_nodes(), 0);
@@ -40,7 +40,7 @@ TEST_F(TestGraph, TestEmptyGraph)
     ASSERT_EQ(g.number_of_edges(), 0);
 }
 
-TEST_F(TestGraph, TestEmptyDiGraph)
+TEST_F(TestClassic, TestEmptyDiGraph)
 {
     DiGraph g = empty_digraph();
     ASSERT_EQ(g.number_of_nodes(), 0);
@@ -49,7 +49,7 @@ TEST_F(TestGraph, TestEmptyDiGraph)
     ASSERT_EQ(g.number_of_edges(), 0);
 }
 
-TEST_F(TestGraph, TestPathGraph)
+TEST_F(TestClassic, TestPathGraph)
 {
     // This has to be updated
     Graph p;
