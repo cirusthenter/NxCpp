@@ -1,5 +1,5 @@
-#include "../../classes/function.h"
-#include "../lattice.h"
+#include "../../classes/function.cc"
+#include "../lattice.cc"
 #include <gtest/gtest.h>
 
 class TestGraph : public ::testing::Test {

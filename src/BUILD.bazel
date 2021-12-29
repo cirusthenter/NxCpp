@@ -1,0 +1,42 @@
+cc_library(
+  name = "graph_files",
+  hdrs =  glob(
+    include = [
+      "*.cc",
+      "*/*.cc",
+      "*/*/*.cc",
+      "*.h",
+      "*/*.h",
+      "*/*/*.h",
+    ],
+    exclude = [
+      "test_*.cc",
+      "*/test_*.cc",
+      "*/*/test_*.cc",
+      "*/*/*/test_*.cc",],
+  ),
+  visibility=["//visibility:public"],
+  deps = [
+    "@com_google_googletest//:gtest_main",
+  ],
+)
+
+cc_test(
+  name = "all_test",
+  size = "small",
+  srcs = glob(
+    include = [
+      "test_*.cc",
+      "*/test_*.cc",
+      "*/*/test_*.cc",
+      "*/*/*/test_*.cc",
+    ],
+    exclude = [],
+  ),
+  copts = ["-std=c++17"],
+  linkstatic = 0,
+  deps = [
+    "@com_google_googletest//:gtest_main",
+    ":graph_files"
+  ],
+)

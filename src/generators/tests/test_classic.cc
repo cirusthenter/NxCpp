@@ -1,4 +1,4 @@
-#include "../classic.h"
+#include "../classic.cc"
 #include <gtest/gtest.h>
 
 class TestGraph : public ::testing::Test {

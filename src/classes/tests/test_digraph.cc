@@ -1,10 +1,12 @@
-#include "../digraph.h"
-#include "test_graph.cc"
+#include "../digraph.cc"
 #include <gtest/gtest.h>
 
-class TestDiGraph : public TestGraph {
+class TestDiGraph : public ::testing::Test {
 protected:
     DiGraph k3;
+    NodeDict k3nodes;
+    EdgeDict k3edges;
+    OuterAdjDict k3adj;
     OuterAdjDict k3succ;
     OuterAdjDict k3pred;
     DiGraph p3;

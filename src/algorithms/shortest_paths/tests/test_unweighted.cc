@@ -1,7 +1,8 @@
-#include "../../../generators/classic.h"
-#include "../../../generators/lattice.h"
-#include "../unweighted.h"
+#include "../../../generators/classic.cc"
+#include "../../../generators/lattice.cc"
+#include "../unweighted.cc"
 #include <gtest/gtest.h>
+#include <vector>
 
 void validate_grid_path(int r, int c, int s, int t, vector<int> p)
 {

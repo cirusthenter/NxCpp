@@ -13,7 +13,7 @@ main: main.o
 # The main.o target can be written more simply
 
 main.o: main.cpp
-	$(CC) $(CFLAGS) -c main.cpp
+	$(CC) $(CFLAGS) -c main.cc
 
 test:
 	$(CC) $(CFLAGS) -o test -pthread -lgtest_main -lgtest algorithms/shortest_paths/tests/test_unweighted.cc
