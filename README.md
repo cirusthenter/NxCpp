@@ -62,7 +62,7 @@ brew install cmake
 
 ## Google Test by Bazel with GitHub Actions
 
-This project is under C/C++ unit test using [Google Test](https://github.com/google/googletest) executed by [Bazel](https://bazel.build/) with continuous integration provided by [GitHub Actions](https://docs.github.com/actions). 
+This project is under C/C++ unit tests using [Google Test](https://github.com/google/googletest) executed by [Bazel](https://bazel.build/) with continuous integration provided by [GitHub Actions](https://docs.github.com/actions). 
 
 ### Run the Test
 
@@ -73,22 +73,22 @@ cd src
 bazel test --test_output=all //:all_tests
 ```
 
-Bazel finds all the tests in this repository with its name "test_*.cc".
+Bazel finds all the test files in this repository with its name "test_*.cc".
 
 ### Continuous Intergration
 
-`.github/workflows/ci.yml` defines the workflow and blocks any pull request or merging to `main` branch that fails the above bazel test. You can find all the workflows [here](https://github.com/cirusthenter/NxCpp/actions). Administrator review is required for pull requests from non-collaborators.
+The CI file `.github/workflows/ci.yml` defines the workflow and blocks any pull request or merging to `main` branch that fails the above Bazel test. You can find all the workflows [here](https://github.com/cirusthenter/NxCpp/actions). Administrator review is required for pull requests from non-collaborators.
 
 ### Manual Test with CMake
 
-This projects also has a light-weight testing function by CMake. First, create a `CMakeLists.txt` file as follows: 
+This projects also has a light-weight testing function by CMake. First, create `src/CMakeLists.txt` file and open it with Vim (or any other editor you prefer) as follows: 
 
 ```
 touch src/CMakeLists.txt
 vim src/CMakeLists.txt
 ```
 
-Open Vim (or any other editor you prefer) and paste this text. 
+Paste this. 
 
 ```
 cmake_minimum_required(VERSION 3.14)
@@ -119,12 +119,11 @@ add_executable(test2 classes/tests/test_digraph.cc)
 target_link_libraries(test2 gtest_main)
 gtest_discover_tests(test2)
 ########### TO HERE ###########
-
 ```
 
-The file designation is like above if you want to test `classes/tests/test_graph.cc` and `classes/tests/test_digraph.cc`. It will run 2 test suites. Set it to whatever tests you want to try, and copy the three lines however many times you want.
+You designate the test files like above if you want to test `classes/tests/test_graph.cc` and `classes/tests/test_digraph.cc` (It will run 2 test suites in this setting; you can change the number of suits by duplicating the three lines). Set it to whatever tests you want to try, and copy the three lines however many times you want.
 
-Then, install and build Google Test with CMake as follows (See also https://github.com/google/googletest/blob/main/googletest/README.md):
+Then, install and build Google Test with CMake as follows (See also: [README.md of Google Test](https://github.com/google/googletest/blob/main/googletest/README.md)):
 
 ```
 cd src
