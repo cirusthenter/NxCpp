@@ -25,7 +25,7 @@ cc_library(
 )
 
 cc_test(
-  name = "all_test",
+  name = "all_tests",
   size = "small",
   srcs = glob(
     include = [

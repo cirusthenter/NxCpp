@@ -16,4 +16,4 @@ jobs:
     - name: run test
       run: |
         cd src
-        bazel test --test_output=all //:all_test
+        bazel test --test_output=all //:all_tests
