@@ -1,4 +1,4 @@
-#include "../digraph.cc"
+#include "../digraph.hpp"
 #include <gtest/gtest.h>
 
 class TestDiGraph : public ::testing::Test {

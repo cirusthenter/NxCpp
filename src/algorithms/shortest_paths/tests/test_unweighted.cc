@@ -1,6 +1,6 @@
-#include "../../../generators/classic.cc"
-#include "../../../generators/lattice.cc"
-#include "../unweighted.cc"
+#include "../../../generators/classic.hpp"
+#include "../../../generators/lattice.hpp"
+#include "../unweighted.hpp"
 #include <gtest/gtest.h>
 #include <vector>
 

@@ -1,4 +1,4 @@
-#include "../graph.cc"
+#include "../graph.hpp"
 #include <gtest/gtest.h>
 
 class TestGraph : public ::testing::Test {
