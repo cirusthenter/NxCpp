@@ -1,4 +1,4 @@
-#include "../classic.cc"
+#include "../classic.hpp"
 #include <gtest/gtest.h>
 
 class TestClassic : public ::testing::Test {

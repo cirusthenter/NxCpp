@@ -1,5 +1,5 @@
-#include "../../classes/function.cc"
-#include "../lattice.cc"
+#include "../../classes/function.hpp"
+#include "../lattice.hpp"
 #include <gtest/gtest.h>
 
 class TestLattice : public ::testing::Test {

@@ -1,4 +1,4 @@
-#include "../function.cc"
+#include "../function.hpp"
 #include <gtest/gtest.h>
 
 class TestFunction : public ::testing::Test {

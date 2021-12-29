@@ -1,6 +1,6 @@
 #pragma once
-#include "../classes/digraph.cc"
-#include "../classes/graph.cc"
+#include "../classes/digraph.hpp"
+#include "../classes/graph.hpp"
 
 inline Graph cycle_graph(int n);
 inline DiGraph cycle_digraph(int n);

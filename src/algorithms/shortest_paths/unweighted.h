@@ -1,9 +1,8 @@
 #pragma once
-#include "../../classes/digraph.cc"
+#include "../../classes/digraph.hpp"
 #include <float.h>
 #include <unordered_map>
 #include <vector>
-
 
 NodeDoubleDict single_source_shortest_path_length(Graph g, int source, double cutoff);
 NodeDoubleDict single_source_shortest_path_length_directed(DiGraph g, int source, double cutoff);

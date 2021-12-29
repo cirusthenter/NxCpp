@@ -1,6 +1,6 @@
 #pragma once
-#include "digraph.cc"
-#include "graph.cc"
+#include "digraph.hpp"
+#include "graph.hpp"
 #include <unordered_map>
 #include <vector>
 
