@@ -1,4 +1,4 @@
-#include "../function.h"
+#include "../function.cc"
 #include <gtest/gtest.h>
 
 class TestGraph : public ::testing::Test {
