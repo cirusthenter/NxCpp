@@ -1,3 +1,4 @@
+#pragma once
 #include "connected.h"
 
 bool is_connected(Graph g)

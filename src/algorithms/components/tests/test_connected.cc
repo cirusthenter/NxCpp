@@ -2,7 +2,7 @@
 #include "../connected.hpp"
 #include <gtest/gtest.h>
 
-class TestIsomorph : public ::testing::Test {
+class TestConnected : public ::testing::Test {
 protected:
     Graph grid;
     void SetUp() override
@@ -11,7 +11,7 @@ protected:
     }
 };
 
-TEST_F(TestIsomorph, TestCouldBeIsomorphic)
+TEST_F(TestConnected, TestCouldBeIsomorphic)
 {
     ASSERT_TRUE(is_connected(grid));
     Graph g;
