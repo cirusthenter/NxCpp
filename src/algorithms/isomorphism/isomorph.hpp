@@ -1,6 +1,11 @@
 #pragma once
 #include "isomorph.h"
 
+bool graph_could_be_isomorphic(Graph g1, Graph g2)
+{
+    return could_be_isomorphic(g1, g2);
+}
+
 bool could_be_isomorphic(Graph g1, Graph g2)
 {
     // check global properties

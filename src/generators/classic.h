@@ -8,4 +8,6 @@ inline Graph cycle_graph(int n);
 inline DiGraph cycle_digraph(int n);
 inline Graph empty_graph(int n);
 inline DiGraph empty_digraph(int n);
+inline Graph null_graph();
 inline Graph path_graph(int n);
+inline DiGraph path_digraph(int n);

@@ -1,5 +1,12 @@
+#include "../../algorithms/components/connected.hpp"
+#include "../../algorithms/isomorphism/isomorph.hpp"
 #include "../classic.hpp"
 #include <gtest/gtest.h>
+
+auto is_isomorphic(Graph g1, Graph g2)
+{
+    return graph_could_be_isomorphic(g1, g2);
+}
 
 class TestClassic : public ::testing::Test {
 };
@@ -69,20 +76,48 @@ TEST_F(TestClassic, TestEmptyDiGraph)
     ASSERT_EQ(g.number_of_edges(), 0);
 }
 
+TEST_F(TestClassic, TestNullGraph)
+{
+    Graph g = null_graph();
+    ASSERT_EQ(g.number_of_nodes(), 0);
+}
+
+TEST_F(TestClassic, TestNullDiGraph)
+{
+    DiGraph g = null_digraph();
+    ASSERT_EQ(g.number_of_nodes(), 0);
+}
+
 TEST_F(TestClassic, TestPathGraph)
 {
     // This has to be updated
     Graph p;
 
     p = path_graph(0);
-    ASSERT_EQ(p.number_of_nodes(), 0);
-    ASSERT_EQ(p.number_of_edges(), 0);
+    ASSERT_TRUE(is_isomorphic(p, null_graph()));
 
     p = path_graph(1);
-    ASSERT_EQ(p.number_of_nodes(), 1);
-    ASSERT_EQ(p.number_of_edges(), 0);
+    ASSERT_TRUE(is_isomorphic(p, empty_graph(1)));
 
     p = path_graph(10);
-    // ASSERT_EQ(is_connected(p));
+    ASSERT_TRUE(is_connected(p));
     ASSERT_EQ(p.number_of_edges(), 9);
+    NodeDoubleDict expected {
+        { 0, 1 },
+        { 1, 2 },
+        { 2, 2 },
+        { 3, 2 },
+        { 4, 2 },
+        { 5, 2 },
+        { 6, 2 },
+        { 7, 2 },
+        { 8, 2 },
+        { 9, 1 },
+    };
+    ASSERT_EQ(p.degree(), expected);
+    ASSERT_EQ(p.order() - 1, p.edge_size());
+
+    DiGraph dp = path_digraph(3);
+    ASSERT_TRUE(dp.has_edge(0, 1));
+    ASSERT_FALSE(dp.has_edge(1, 0));
 }
