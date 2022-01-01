@@ -26,5 +26,6 @@ struct SSSPBasic {
     }
 };
 inline SSSPBasic _single_source_shortest_path_basic(Graph g, int source);
+inline SSSPBasic _single_source_dijkstra_path_basic(Graph g, int source, string weight);
 inline pair<NodeDoubleDict, NodeDoubleDict> _accumulate_basic(NodeDoubleDict& betweenness, vector<int>& s, unordered_map<int, vector<int>>& p, unordered_map<int, double>& sigma, int source);
 inline NodeDoubleDict _rescale(NodeDoubleDict betweenness, int n, bool normalized, bool directed);

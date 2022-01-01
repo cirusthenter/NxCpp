@@ -62,6 +62,10 @@ SSSPBasic _single_source_shortest_path_basic(Graph g, int source)
     return SSSPBasic(s, p, sigma, d);
 }
 
+// SSSPBasic _single_source_dijkstra_path_basic(Graph g, int source, string weight)
+// {
+// }
+
 pair<NodeDoubleDict, NodeDoubleDict> _accumulate_basic(NodeDoubleDict& betweenness, vector<int>& s, unordered_map<int, vector<int>>& p, unordered_map<int, double>& sigma, int source)
 {
     NodeDoubleDict delta;
