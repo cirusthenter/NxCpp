@@ -4,10 +4,11 @@
 #include "../betweenness.hpp"
 #include <gtest/gtest.h>
 
-bool equal_to_6th_place(double a, double b)
+bool equal_to_4th_place(double a, double b)
 {
-    int x1 = (a * 1000000);
-    int x2 = (b * 1000000);
+    // This has to be updated
+    int x1 = (a * 10000);
+    int x2 = (b * 10000);
     return x1 == x2;
 }
 
@@ -71,7 +72,7 @@ TEST_F(TestBetweennessCentrality, TestKrackhardtKiteGraph)
     for (auto [n, bet] : b)
         expected[n] /= 2;
     for (auto [n, val] : b)
-        ASSERT_TRUE(equal_to_6th_place(expected[n], val));
+        ASSERT_TRUE(equal_to_4th_place(expected[n], val));
 }
 
 TEST_F(TestBetweennessCentrality, TestKrackhardtKiteGraphNormalized)
@@ -91,7 +92,7 @@ TEST_F(TestBetweennessCentrality, TestKrackhardtKiteGraphNormalized)
         { 9, 0 },
     };
     for (auto [n, val] : b)
-        ASSERT_TRUE(equal_to_6th_place(expected[n], val));
+        ASSERT_TRUE(equal_to_4th_place(expected[n], val));
 }
 
 TEST_F(TestBetweennessCentrality, TestLesMiserablesGraphNormalized)
@@ -180,7 +181,7 @@ TEST_F(TestBetweennessCentrality, TestLesMiserablesGraphNormalized)
     auto nodes = g.nodes();
     for (auto [n, val] : b) {
         string name = nodes[n].begin()->first;
-        ASSERT_TRUE(equal_to_6th_place(b_answer[name], val));
+        ASSERT_TRUE(equal_to_4th_place(b_answer[name], val));
     }
 }
 
@@ -270,6 +271,6 @@ TEST_F(TestBetweennessCentrality, TestLesMiserablesGraph)
     auto nodes = g.nodes();
     for (auto [n, val] : b) {
         string name = nodes[n].begin()->first;
-        ASSERT_TRUE(equal_to_6th_place(b_answer[name], val));
+        ASSERT_TRUE(equal_to_4th_place(b_answer[name], val));
     }
 }
