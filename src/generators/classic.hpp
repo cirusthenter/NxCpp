@@ -69,9 +69,30 @@ DiGraph empty_digraph(int n = 0)
     return g;
 }
 
+Graph null_graph()
+{
+    Graph g = empty_graph(0);
+    return g;
+}
+
+DiGraph null_digraph()
+{
+    DiGraph g = empty_digraph(0);
+    return g;
+}
+
 Graph path_graph(int n)
 {
     Graph g = empty_graph(n);
+    for (int i = 0; i < n - 1; ++i) {
+        g.add_edge(i, i + 1);
+    }
+    return g;
+}
+
+DiGraph path_digraph(int n)
+{
+    DiGraph g = empty_digraph(n);
     for (int i = 0; i < n - 1; ++i) {
         g.add_edge(i, i + 1);
     }
