@@ -1,7 +1,6 @@
 #include "../../../generators/classic.hpp"
 #include "../../../generators/small.hpp"
 #include "../../../generators/social.hpp"
-#include "../../../utils/approx.hpp"
 #include "../betweenness.hpp"
 #include <gtest/gtest.h>
 
@@ -65,7 +64,7 @@ TEST_F(TestBetweennessCentrality, TestKrackhardtKiteGraph)
     for (auto [n, bet] : b)
         expected[n] /= 2;
     for (auto [n, val] : b)
-        ASSERT_TRUE(equal_to_6th_place(expected[n], val));
+        ASSERT_DOUBLE_EQ(expected[n], val);
 }
 
 TEST_F(TestBetweennessCentrality, TestKrackhardtKiteGraphNormalized)
@@ -85,7 +84,7 @@ TEST_F(TestBetweennessCentrality, TestKrackhardtKiteGraphNormalized)
         { 9, 0 },
     };
     for (auto [n, val] : b)
-        ASSERT_TRUE(equal_to_6th_place(expected[n], val));
+        ASSERT_DOUBLE_EQ(expected[n], val);
 }
 
 TEST_F(TestBetweennessCentrality, TestLesMiserablesGraphNormalized)
@@ -174,7 +173,7 @@ TEST_F(TestBetweennessCentrality, TestLesMiserablesGraphNormalized)
     auto nodes = g.nodes();
     for (auto [n, val] : b) {
         string name = nodes[n].begin()->first;
-        ASSERT_TRUE(equal_to_6th_place(b_answer[name], val));
+        ASSERT_DOUBLE_EQ(b_answer[name], val);
     }
 }
 
@@ -264,6 +263,6 @@ TEST_F(TestBetweennessCentrality, TestLesMiserablesGraph)
     auto nodes = g.nodes();
     for (auto [n, val] : b) {
         string name = nodes[n].begin()->first;
-        ASSERT_TRUE(equal_to_6th_place(b_answer[name], val));
+        ASSERT_DOUBLE_EQ(b_answer[name], val);
     }
 }

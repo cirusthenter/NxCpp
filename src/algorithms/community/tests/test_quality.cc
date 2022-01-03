@@ -1,6 +1,5 @@
 #include "../../../generators/classic.hpp"
 #include "../../../generators/random_graphs.hpp"
-#include "../../../utils/approx.hpp"
 #include "../quality.hpp"
 #include <gtest/gtest.h>
 
@@ -14,10 +13,10 @@ TEST_F(TestQuality, TestModularity)
 
     g = barbell_graph(3, 0);
     c = vector<unordered_set<int>>({ unordered_set<int>({ 0, 1, 4 }), unordered_set<int>({ 2, 3, 5 }) });
-    ASSERT_TRUE(equal_to_6th_place(modularity(g, c), (double)-16 / (14 * 14)));
+    ASSERT_DOUBLE_EQ(modularity(g, c), (double)-16 / (14 * 14));
 
     c = vector<unordered_set<int>>({ unordered_set<int>({ 0, 1, 2 }), unordered_set<int>({ 3, 4, 5 }) });
-    ASSERT_TRUE(equal_to_6th_place(modularity(g, c), (double)35 * 2 / (14 * 14)));
+    ASSERT_DOUBLE_EQ(modularity(g, c), (double)35 * 2 / (14 * 14));
 
     int n = 1000;
     g = erdos_renyi_graph(n, 0.09, true, 1);
