@@ -1,6 +1,40 @@
 #pragma once
 #include "classic.h"
 
+Graph barbell_graph(int m1, int m2)
+{
+    if (m1 < 2)
+        throw NxCppError();
+    if (m2 < 0)
+        throw NxCppError();
+
+    // left barbell
+    Graph g = complete_graph(m1);
+
+    // connecting path
+    for (int i = m1; i < m1 + m2 - 1; ++i)
+        g.add_node(i);
+    if (m2 > 1)
+        for (int i = m1; i < m1 + m2; ++i)
+            g.add_edge(i - 1, i);
+
+    // right barbell
+    for (int i = m1 + m2; i < 2 * m1 + m2; ++i) {
+        for (int j = m1 + m2; j < 2 * m1 + m2; ++j) {
+            if (i == j)
+                continue;
+            g.add_edge(i, j);
+        }
+    }
+
+    // connecting it up
+    g.add_edge(m1 - 1, m1);
+    if (m2 > 0)
+        g.add_edge(m1 + m2 - 1, m1 + m2);
+
+    return g;
+}
+
 Graph complete_graph(int n)
 {
     Graph g = empty_graph(n);

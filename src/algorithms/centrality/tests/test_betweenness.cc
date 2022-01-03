@@ -1,16 +1,9 @@
 #include "../../../generators/classic.hpp"
 #include "../../../generators/small.hpp"
 #include "../../../generators/social.hpp"
+#include "../../../utils/approx.hpp"
 #include "../betweenness.hpp"
 #include <gtest/gtest.h>
-
-bool equal_to_6th_place(double a, double b)
-{
-    // This has to be updated
-    int x1 = (a * 1048576); // 1048576 = 2^20
-    int x2 = (b * 1048576); // 1048576 = 2^20
-    return x1 == x2;
-}
 
 class TestBetweennessCentrality : public ::testing::Test {
 };
