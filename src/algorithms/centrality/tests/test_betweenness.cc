@@ -3,6 +3,7 @@
 #include "../../../generators/social.hpp"
 #include "../betweenness.hpp"
 #include <gtest/gtest.h>
+#define EPSILON 0.0000000001
 
 class TestBetweennessCentrality : public ::testing::Test {
 };
@@ -64,7 +65,7 @@ TEST_F(TestBetweennessCentrality, TestKrackhardtKiteGraph)
     for (auto [n, bet] : b)
         expected[n] /= 2;
     for (auto [n, val] : b)
-        ASSERT_DOUBLE_EQ(expected[n], val);
+        ASSERT_NEAR(expected[n], val, EPSILON);
 }
 
 TEST_F(TestBetweennessCentrality, TestKrackhardtKiteGraphNormalized)
@@ -84,7 +85,7 @@ TEST_F(TestBetweennessCentrality, TestKrackhardtKiteGraphNormalized)
         { 9, 0 },
     };
     for (auto [n, val] : b)
-        ASSERT_DOUBLE_EQ(expected[n], val);
+        ASSERT_NEAR(expected[n], val, EPSILON);
 }
 
 TEST_F(TestBetweennessCentrality, TestLesMiserablesGraphNormalized)
@@ -173,7 +174,7 @@ TEST_F(TestBetweennessCentrality, TestLesMiserablesGraphNormalized)
     auto nodes = g.nodes();
     for (auto [n, val] : b) {
         string name = nodes[n].begin()->first;
-        ASSERT_DOUBLE_EQ(b_answer[name], val);
+        ASSERT_NEAR(b_answer[name], val, EPSILON);
     }
 }
 
@@ -263,6 +264,6 @@ TEST_F(TestBetweennessCentrality, TestLesMiserablesGraph)
     auto nodes = g.nodes();
     for (auto [n, val] : b) {
         string name = nodes[n].begin()->first;
-        ASSERT_DOUBLE_EQ(b_answer[name], val);
+        ASSERT_NEAR(b_answer[name], val, EPSILON);
     }
 }
