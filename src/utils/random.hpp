@@ -16,6 +16,7 @@ double random_double(double d_min, double d_max, bool has_seed = false, int seed
 std::vector<double> random_doubles(int n, double d_min = 0, double d_max = 1, bool has_seed = false, int seed = 0)
 {
     // n: number of random doubles
+    // differs on different machines
     std::random_device rd;
     std::default_random_engine random_eng(rd());
     std::default_random_engine seed_eng(seed);
