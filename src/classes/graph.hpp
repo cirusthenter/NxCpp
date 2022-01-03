@@ -229,19 +229,19 @@ public:
         return edges;
     }
 
-    EdgeDict edges(vector<int> nodes)
+    EdgeDict edges(unordered_set<int> nds)
     {
         // This method can be updated
-        EdgeDict edges;
-        for (auto n : nodes) {
+        EdgeDict es;
+        for (auto n : nds) {
             for (auto [nbr, attr] : adj[n]) {
                 if (n < nbr)
-                    edges[Edge(n, nbr)] = attr;
+                    es[Edge(n, nbr)] = attr;
                 else
-                    edges[Edge(nbr, n)] = attr;
+                    es[Edge(nbr, n)] = attr;
             }
         }
-        return edges;
+        return es;
     }
 
     AttrDict get_edge_data(int u, int v, AttrDict def_dict = AttrDict())

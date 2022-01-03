@@ -159,7 +159,7 @@ public:
         return edges;
     }
 
-    EdgeDict edges(vector<int> nodes)
+    EdgeDict edges(unordered_set<int> nodes)
     {
         // This method can be updated
         EdgeDict edges;
@@ -183,7 +183,7 @@ public:
         return edges(n);
     }
 
-    EdgeDict out_edges(vector<int> nodes)
+    EdgeDict out_edges(unordered_set<int> nodes)
     {
         return edges(nodes);
     }
@@ -209,7 +209,7 @@ public:
         return edges;
     }
 
-    EdgeDict in_edges(vector<int> nodes)
+    EdgeDict in_edges(unordered_set<int> nodes)
     {
         // This method can be updated
         EdgeDict edges;

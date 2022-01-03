@@ -60,7 +60,7 @@ std::unordered_map<K1, unordered_set<K2>> convert_mapmap_to_mapset(std::unordere
 }
 
 template <typename K>
-std::unordered_set<K> intersection(std::unordered_set<K> s1, std::unordered_set<K> s2)
+std::unordered_set<K> intersection(std::unordered_set<K>& s1, std::unordered_set<K>& s2)
 {
     std::unordered_set<K>&small = s1, &large = s2;
     if (s1.size() > s2.size()) {
@@ -76,7 +76,7 @@ std::unordered_set<K> intersection(std::unordered_set<K> s1, std::unordered_set<
 }
 
 template <typename K>
-std::unordered_set<K> difference(std::unordered_set<K> s1, std::unordered_set<K> s2)
+std::unordered_set<K> difference(std::unordered_set<K>& s1, std::unordered_set<K>& s2)
 {
     // return s1 - s2
     std::unordered_set<K> s;
@@ -88,13 +88,13 @@ std::unordered_set<K> difference(std::unordered_set<K> s1, std::unordered_set<K>
 }
 
 template <typename K, typename V>
-bool in(std::unordered_map<K, V> m, K k)
+bool in(std::unordered_map<K, V>& m, K k)
 {
     return m.find(k) != m.end();
 }
 
 template <typename K>
-bool in(std::unordered_set<K> s, K k)
+bool in(std::unordered_set<K>& s, K k)
 {
     return s.find(k) != s.end();
 }

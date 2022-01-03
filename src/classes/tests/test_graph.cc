@@ -93,7 +93,7 @@ TEST_F(TestGraph, TestEdges)
     Graph g = k3;
     ASSERT_EQ(g.edges(), k3edges);
     ASSERT_EQ(g.edges(0), EdgeDict({ { Edge(0, 1), AttrDict() }, { Edge(0, 2), AttrDict() } }));
-    ASSERT_EQ(g.edges(vector<int> { 0, 1 }), EdgeDict({ { Edge(0, 1), AttrDict() }, { Edge(0, 2), AttrDict() }, { Edge(1, 2), AttrDict() } }));
+    ASSERT_EQ(g.edges(unordered_set<int> { 0, 1 }), EdgeDict({ { Edge(0, 1), AttrDict() }, { Edge(0, 2), AttrDict() }, { Edge(1, 2), AttrDict() } }));
 }
 
 TEST_F(TestGraph, TestDegree)

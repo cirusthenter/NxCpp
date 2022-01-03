@@ -2,6 +2,7 @@
 #include "../classes/digraph.hpp"
 #include "../classes/graph.hpp"
 
+inline Graph barbell_graph(int m1, int m2);
 inline Graph complete_graph(int n);
 inline DiGraph complete_directed_graph(int n);
 inline Graph cycle_graph(int n);

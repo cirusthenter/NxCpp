@@ -90,9 +90,9 @@ TEST_F(TestDiGraph, TestEdges)
     };
     ASSERT_EQ(g.edges(), edges);
     ASSERT_EQ(g.edges(0), EdgeDict({ { Edge(0, 1), AttrDict() }, { Edge(0, 2), AttrDict() } }));
-    ASSERT_EQ(g.edges(vector<int> { 0, 1 }), EdgeDict({ { Edge(0, 1), AttrDict() }, { Edge(0, 2), AttrDict() }, { Edge(1, 0), AttrDict() }, { Edge(1, 2), AttrDict() } }));
+    ASSERT_EQ(g.edges(unordered_set<int> { 0, 1 }), EdgeDict({ { Edge(0, 1), AttrDict() }, { Edge(0, 2), AttrDict() }, { Edge(1, 0), AttrDict() }, { Edge(1, 2), AttrDict() } }));
     ASSERT_THROW(g.edges(-1), NxCppError);
-    ASSERT_THROW(g.edges(vector<int> { 0, 1, 2, -1 }), NxCppError);
+    ASSERT_THROW(g.edges(unordered_set<int> { 0, 1, 2, -1 }), NxCppError);
 }
 
 TEST_F(TestDiGraph, TestOutEdges)
@@ -108,9 +108,9 @@ TEST_F(TestDiGraph, TestOutEdges)
     };
     ASSERT_EQ(g.out_edges(), out_edges);
     ASSERT_EQ(g.out_edges(0), EdgeDict({ { Edge(0, 1), AttrDict() }, { Edge(0, 2), AttrDict() } }));
-    ASSERT_EQ(g.out_edges(vector<int> { 0, 1 }), EdgeDict({ { Edge(0, 1), AttrDict() }, { Edge(0, 2), AttrDict() }, { Edge(1, 0), AttrDict() }, { Edge(1, 2), AttrDict() } }));
+    ASSERT_EQ(g.out_edges(unordered_set<int> { 0, 1 }), EdgeDict({ { Edge(0, 1), AttrDict() }, { Edge(0, 2), AttrDict() }, { Edge(1, 0), AttrDict() }, { Edge(1, 2), AttrDict() } }));
     ASSERT_THROW(g.out_edges(-1), NxCppError);
-    ASSERT_THROW(g.out_edges(vector<int> { 0, 1, 2, -1 }), NxCppError);
+    ASSERT_THROW(g.out_edges(unordered_set<int> { 0, 1, 2, -1 }), NxCppError);
 }
 
 TEST_F(TestDiGraph, TestOutEdgesDir)
@@ -122,9 +122,9 @@ TEST_F(TestDiGraph, TestOutEdgesDir)
     };
     ASSERT_EQ(g.out_edges(), out_edges);
     ASSERT_EQ(g.out_edges(0), EdgeDict({ { Edge(0, 1), AttrDict() } }));
-    ASSERT_EQ(g.out_edges(vector<int> { 0, 1 }), out_edges);
+    ASSERT_EQ(g.out_edges(unordered_set<int> { 0, 1 }), out_edges);
     ASSERT_THROW(g.out_edges(-1), NxCppError);
-    ASSERT_THROW(g.out_edges(vector<int> { 0, 1, 2, -1 }), NxCppError);
+    ASSERT_THROW(g.out_edges(unordered_set<int> { 0, 1, 2, -1 }), NxCppError);
 }
 
 TEST_F(TestDiGraph, TestInEdgesDir)
@@ -137,9 +137,9 @@ TEST_F(TestDiGraph, TestInEdgesDir)
     ASSERT_EQ(g.in_edges(), in_edges);
     ASSERT_EQ(g.in_edges(0), EdgeDict());
     ASSERT_EQ(g.in_edges(1), EdgeDict({ { Edge(0, 1), AttrDict() } }));
-    ASSERT_EQ(g.in_edges(vector<int> { 0, 1 }), EdgeDict({ { Edge(0, 1), AttrDict() } }));
+    ASSERT_EQ(g.in_edges(unordered_set<int> { 0, 1 }), EdgeDict({ { Edge(0, 1), AttrDict() } }));
     ASSERT_THROW(g.in_edges(-1), NxCppError);
-    ASSERT_THROW(g.in_edges(vector<int> { 0, 1, 2, -1 }), NxCppError);
+    ASSERT_THROW(g.in_edges(unordered_set<int> { 0, 1, 2, -1 }), NxCppError);
 }
 
 TEST_F(TestDiGraph, TestDegree)

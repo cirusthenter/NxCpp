@@ -11,6 +11,59 @@ auto is_isomorphic(Graph g1, Graph g2)
 class TestClassic : public ::testing::Test {
 };
 
+TEST_F(TestClassic, TestBarbellGraph)
+{
+
+    // number of nodes = 2*m1 + m2 (2 m1-complete graphs + m2-path + 2 edges)
+    // number of edges = 2*(nx.number_of_edges(m1-complete graph) + m2 + 1
+    int m1, m2;
+    Graph b;
+
+    m1 = 3;
+    m2 = 5;
+    b = barbell_graph(m1, m2);
+    ASSERT_EQ(b.number_of_nodes(), 2 * m1 + m2);
+    ASSERT_EQ(b.number_of_edges(), m1 * (m1 - 1) + m2 + 1);
+
+    m1 = 4;
+    m2 = 10;
+    b = barbell_graph(m1, m2);
+    ASSERT_EQ(b.number_of_nodes(), 2 * m1 + m2);
+    ASSERT_EQ(b.number_of_edges(), m1 * (m1 - 1) + m2 + 1);
+
+    m1 = 3;
+    m2 = 20;
+    b = barbell_graph(m1, m2);
+    ASSERT_EQ(b.number_of_nodes(), 2 * m1 + m2);
+    ASSERT_EQ(b.number_of_edges(), m1 * (m1 - 1) + m2 + 1);
+
+    // Raise NetworkXError if m1 < 2
+    m1 = 1;
+    m2 = 20;
+    ASSERT_THROW(barbell_graph(m1, m2), NxCppError);
+
+    // Raise NetworkXError if m2 < 0
+    m1 = 5;
+    m2 = -2;
+    ASSERT_THROW(barbell_graph(m1, m2), NxCppError);
+
+    // barbell_graph(2, m) = path_graph(m + 4)
+    m1 = 2;
+    m2 = 5;
+    b = barbell_graph(m1, m2);
+    ASSERT_TRUE(is_isomorphic(b, path_graph(m2 + 4)));
+
+    m1 = 2;
+    m2 = 10;
+    b = barbell_graph(m1, m2);
+    ASSERT_TRUE(is_isomorphic(b, path_graph(m2 + 4)));
+
+    m1 = 2;
+    m2 = 20;
+    b = barbell_graph(m1, m2);
+    ASSERT_TRUE(is_isomorphic(b, path_graph(m2 + 4)));
+}
+
 TEST_F(TestClassic, TestCompleteGraph)
 {
     int cases[] = { 0, 1, 3, 5 };
