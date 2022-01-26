@@ -87,6 +87,18 @@ std::unordered_set<K> difference(std::unordered_set<K>& s1, std::unordered_set<K
     return s;
 }
 
+template <typename K>
+void difference_update(std::unordered_set<K>& s1, std::unordered_set<K>& s2)
+{
+    // return element unique in s1
+    std::unordered_set<K> cp = s1;
+    for (K e : cp)
+        if (s2.find(e) != s2.end()) //
+            s1.erase(e); // remove the element in s1 if it exists in both of sets
+
+    return;
+}
+
 template <typename K, typename V>
 bool in(std::unordered_map<K, V>& m, K k)
 {

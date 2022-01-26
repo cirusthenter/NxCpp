@@ -256,23 +256,27 @@ public:
         return adj;
     }
 
-    double degree(int n, string weight = "")
+    double degree(int nd, string weight = "")
     {
-        if (!has_node(n))
+        if (!has_node(nd))
             throw NxCppError();
 
         if (weight == "") {
-            if (has_edge(n, n))
-                return adj[n].size() + 1;
-            return adj[n].size();
+            if (has_edge(nd, nd))
+                return adj[nd].size() + 1;
+            return adj[nd].size();
         }
 
         double sum_weight = 0;
-        for (auto [n, attr] : neighbors(n)) {
+        for (auto [n, attr] : neighbors(nd)) {
+            double wt;
             if (attr.find(weight) == attr.end())
-                sum_weight += 1;
+                wt = 1;
             else
-                sum_weight += attr[weight];
+                wt = attr[weight];
+            if (nd == n)
+                wt *= 2;
+            sum_weight += wt;
         }
         return sum_weight;
     }

@@ -29,3 +29,16 @@ std::vector<double> random_doubles(int n, double d_min = 0, double d_max = 1, bo
             v.push_back(distr(random_eng));
     return v;
 }
+
+template <typename T>
+void shuffle_vector(std::vector<T>& v, bool has_seed, int seed)
+{
+    std::random_device rd;
+    std::default_random_engine random_eng(rd());
+    std::default_random_engine seed_eng(seed);
+    if (has_seed)
+        std::shuffle(v.begin(), v.end(), seed_eng);
+    else
+        std::shuffle(v.begin(), v.end(), random_eng);
+    return;
+}
