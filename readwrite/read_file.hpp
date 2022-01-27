@@ -1,7 +1,7 @@
 #pragma once
 #include "read_file.h"
 
-Graph read_file(string path)
+Graph read_undirected_file(string path)
 {
     ifstream file(path);
     if (!file.good())
