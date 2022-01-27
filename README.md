@@ -73,9 +73,7 @@ This project is under C/C++ unit tests using [Google Test](https://github.com/go
 Test the code as follows:
 
 ```
-cd src
 bazel test --test_output=all //:all_tests
-cd ../
 ```
 
 Bazel finds all the test files in this repository with its name "test_*.cc".
@@ -86,11 +84,11 @@ The CI file `.github/workflows/ci.yml` defines the workflow and blocks any pull 
 
 ### Manual Test with CMake
 
-This projects also has a light-weight testing function by CMake. First, create `src/CMakeLists.txt` file and open it with Vim (or any other editor you prefer) as follows: 
+This projects also has a light-weight testing function by CMake. First, create `CMakeLists.txt` file and open it with Vim (or any other editor you prefer) as follows: 
 
 ```
-touch src/CMakeLists.txt
-vim src/CMakeLists.txt
+touch CMakeLists.txt
+vim CMakeLists.txt
 ```
 
 Paste this. 
@@ -131,17 +129,16 @@ You designate the test files like above if you want to test `classes/tests/test_
 Then, install and build Google Test with CMake as follows (See also: [README.md of Google Test](https://github.com/google/googletest/blob/main/googletest/README.md)):
 
 ```
-cd src
 cmake -S . -B build
 cmake --build build
 cd build && ctest
-cd ../../
+cd ../
 ```
 
 And you would get the result like this.
 
 ```
-Test project /home/thenter/NxCpp/src/build
+Test project /home/thenter/NxCpp/build
       Start  1: TestGraph.TestContains
  1/43 Test  #1: TestGraph.TestContains ..............   Passed    0.00 sec
       Start  2: TestGraph.TestOrder

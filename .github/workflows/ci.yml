@@ -15,5 +15,4 @@ jobs:
     - uses: actions/checkout@v2
     - name: run test
       run: |
-        cd src
         bazel test --test_output=all //:all_tests
