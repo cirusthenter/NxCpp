@@ -1,5 +1,5 @@
 #pragma once
-#include "small.h"
+#include "social.h"
 
 Graph karate_club_graph()
 {
