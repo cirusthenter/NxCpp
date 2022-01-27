@@ -27,7 +27,7 @@ vector<vector<unordered_set<int>>> louvain_partitions(
     double mod = 0;
     Graph graph = g;
 
-    double m = graph.edge_size(weight = weight);
+    double m = graph.edge_size(weight);
     unordered_map<int, unordered_set<int>> com_nodes;
     for (auto [u, attr] : g.nodes())
         com_nodes[u] = unordered_set<int>({ u });
@@ -40,7 +40,7 @@ vector<vector<unordered_set<int>>> louvain_partitions(
     partitions.push_back(partition);
 
     while (improvement) {
-        double new_mod = modularity(graph, inner_partition, weight = "weight", resolution);
+        double new_mod = modularity(graph, inner_partition, weight, resolution);
         if (new_mod - mod <= threshold)
             break;
         mod = new_mod;

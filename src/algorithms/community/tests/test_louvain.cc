@@ -31,7 +31,6 @@ TEST_F(TestLouvain, TestValidPartition)
 
 TEST_F(TestLouvain, TestPartition)
 {
-    vector<double> mods;
     Graph g = karate_club_graph();
     vector<unordered_set<int>> partition = louvain_communities(g, "weight", 1, .00000001, true, 0);
 
