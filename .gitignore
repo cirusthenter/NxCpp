@@ -43,3 +43,6 @@ test3
 bazel*
 CMakeLists.txt
 googletest
+manual_test
+graph
+main

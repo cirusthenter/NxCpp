@@ -7,20 +7,21 @@ class NotAPartition : public NxCppError {
     */
 };
 
-double modularity(Graph g, vector<unordered_set<int>> communities, string weight = "", double resolution = 1)
+double modularity(Graph g, vector<unordered_set<int>> communities, string weight = "weight", double resolution = 1)
 {
     if (!is_partition(g, communities))
         throw NotAPartition();
     if (g.is_directed())
         throw NotImplementedException();
 
-    NodeDoubleDict degree;
     double deg_sum = 0, m, norm;
-    degree = g.degree(weight);
+    NodeDoubleDict degree = g.degree(weight);
     for (auto [n, deg] : degree)
         deg_sum += deg;
     m = deg_sum / 2;
     norm = 1 / (deg_sum * deg_sum);
+
+    double q = 0;
 
     auto community_contribution = [&](unordered_set<int> community) {
         double l_c = 0;
@@ -40,15 +41,13 @@ double modularity(Graph g, vector<unordered_set<int>> communities, string weight
 
         double degree_sum = 0;
         for (auto u : community)
-            degree_sum += g.degree(u, weight);
+            degree_sum += degree[u];
 
         return l_c / m - resolution * degree_sum * degree_sum * norm;
     };
 
-    double q = 0;
-    for (auto community : communities) {
+    for (auto community : communities)
         q += community_contribution(community);
-    }
 
     return q;
 }

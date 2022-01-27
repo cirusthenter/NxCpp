@@ -1,5 +1,89 @@
 #pragma once
-#include "small.h"
+#include "social.h"
+
+Graph karate_club_graph()
+{
+    Graph g;
+    g.add_edge(0, 1);
+    g.add_edge(0, 2);
+    g.add_edge(0, 3);
+    g.add_edge(0, 4);
+    g.add_edge(0, 5);
+    g.add_edge(0, 6);
+    g.add_edge(0, 7);
+    g.add_edge(0, 8);
+    g.add_edge(0, 10);
+    g.add_edge(0, 11);
+    g.add_edge(0, 12);
+    g.add_edge(0, 13);
+    g.add_edge(0, 17);
+    g.add_edge(0, 19);
+    g.add_edge(0, 21);
+    g.add_edge(0, 31);
+    g.add_edge(1, 2);
+    g.add_edge(1, 3);
+    g.add_edge(1, 7);
+    g.add_edge(1, 13);
+    g.add_edge(1, 17);
+    g.add_edge(1, 19);
+    g.add_edge(1, 21);
+    g.add_edge(1, 30);
+    g.add_edge(2, 3);
+    g.add_edge(2, 7);
+    g.add_edge(2, 8);
+    g.add_edge(2, 9);
+    g.add_edge(2, 13);
+    g.add_edge(2, 27);
+    g.add_edge(2, 28);
+    g.add_edge(2, 32);
+    g.add_edge(3, 7);
+    g.add_edge(3, 12);
+    g.add_edge(3, 13);
+    g.add_edge(4, 6);
+    g.add_edge(4, 10);
+    g.add_edge(5, 6);
+    g.add_edge(5, 10);
+    g.add_edge(5, 16);
+    g.add_edge(6, 16);
+    g.add_edge(8, 30);
+    g.add_edge(8, 32);
+    g.add_edge(8, 33);
+    g.add_edge(9, 33);
+    g.add_edge(13, 33);
+    g.add_edge(14, 32);
+    g.add_edge(14, 33);
+    g.add_edge(15, 32);
+    g.add_edge(15, 33);
+    g.add_edge(18, 32);
+    g.add_edge(18, 33);
+    g.add_edge(19, 33);
+    g.add_edge(20, 32);
+    g.add_edge(20, 33);
+    g.add_edge(22, 32);
+    g.add_edge(22, 33);
+    g.add_edge(23, 25);
+    g.add_edge(23, 27);
+    g.add_edge(23, 29);
+    g.add_edge(23, 32);
+    g.add_edge(23, 33);
+    g.add_edge(24, 25);
+    g.add_edge(24, 27);
+    g.add_edge(24, 31);
+    g.add_edge(25, 31);
+    g.add_edge(26, 29);
+    g.add_edge(26, 33);
+    g.add_edge(27, 33);
+    g.add_edge(28, 31);
+    g.add_edge(28, 33);
+    g.add_edge(29, 32);
+    g.add_edge(29, 33);
+    g.add_edge(30, 32);
+    g.add_edge(30, 33);
+    g.add_edge(31, 32);
+    g.add_edge(31, 33);
+    g.add_edge(32, 33);
+    return g;
+}
 
 Graph les_miserables_graph()
 {
