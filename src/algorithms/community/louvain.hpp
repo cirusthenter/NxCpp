@@ -1,7 +1,5 @@
 #pragma once
 #include "louvain.h"
-#include <chrono>
-using namespace std::chrono;
 
 vector<unordered_set<int>> louvain_communities(
     Graph g,
@@ -67,7 +65,6 @@ OneLevel _one_level(
     bool has_seed,
     int seed)
 {
-    auto start1 = high_resolution_clock::now();
     unordered_map<int, int> node2com;
     unordered_map<int, unordered_set<int>> inner_partition;
     const string weight = "weight";
@@ -103,7 +100,6 @@ OneLevel _one_level(
     int nb_moves = 1;
     bool improvement = false;
 
-    auto start_other = high_resolution_clock::now();
     while (nb_moves > 0) {
         nb_moves = 0;
         for (int u : rand_nodes) {
