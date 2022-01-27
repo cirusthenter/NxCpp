@@ -3,4 +3,4 @@
 #include "../classes/graph.hpp"
 #include <fstream>
 
-inline Graph read_file(string path);
+inline Graph read_undirected_file(string path);

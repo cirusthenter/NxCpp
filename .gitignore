@@ -31,7 +31,6 @@
 *.out
 *.app
 
-graph/
 .vscode
 main.cpp
 a.out
