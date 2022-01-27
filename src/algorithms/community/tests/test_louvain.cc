@@ -35,6 +35,7 @@ TEST_F(TestLouvain, TestPartition)
     Graph g = karate_club_graph();
     vector<unordered_set<int>> partition = louvain_communities(g, "weight", 1, .00000001, true, 0);
 
+    cout << "modularity: " << modularity(g, partition) << endl;
     ASSERT_TRUE(is_partition(g, partition));
 }
 

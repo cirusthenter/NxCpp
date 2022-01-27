@@ -23,7 +23,7 @@ vector<vector<unordered_set<int>>> louvain_partitions(
     bool has_seed = false,
     int seed = 0)
 {
-    // cout  << "file read" << endl;
+    cout << "file read" << endl;
     vector<unordered_set<int>> partition;
     for (auto [u, attr] : g.nodes())
         partition.push_back(unordered_set<int>({ u }));
@@ -45,7 +45,7 @@ vector<vector<unordered_set<int>>> louvain_partitions(
     partitions.push_back(partition);
     while (improvement) {
         double new_mod = modularity(graph, inner_partition, weight = "weight", resolution);
-        // cout  << mod << " ----> " << new_mod << endl;
+        cout << mod << " ----> " << new_mod << endl;
         if (new_mod - mod <= threshold)
             break;
         auto graph_comnodes = _gen_graph(graph, inner_partition, com_nodes);
@@ -77,8 +77,8 @@ OneLevel _one_level(
     const string weight = "weight";
     auto degrees = g.degree(weight);
     auto stop1 = high_resolution_clock::now();
-    auto duration1 = duration_cast<microseconds>(stop1 - start1);
-    // cout  << "one level 1: " << duration1.count() << "ms" << endl;
+    auto duration1 = duration_cast<milliseconds>(stop1 - start1);
+    cout << "one level 1: " << duration1.count() << "ms" << endl;
     auto start2 = high_resolution_clock::now();
     NodeDoubleDict stot;
     {
@@ -91,8 +91,8 @@ OneLevel _one_level(
         }
     }
     auto stop2 = high_resolution_clock::now();
-    auto duration2 = duration_cast<microseconds>(stop2 - start2);
-    // cout  << "one level 2: " << duration2.count() << "ms" << endl;
+    auto duration2 = duration_cast<milliseconds>(stop2 - start2);
+    cout << "one level 2: " << duration2.count() << "ms" << endl;
 
     auto start3 = high_resolution_clock::now();
     unordered_map<int, unordered_map<int, double>> nbrs;
@@ -108,8 +108,8 @@ OneLevel _one_level(
         }
     }
     auto stop3 = high_resolution_clock::now();
-    auto duration3 = duration_cast<microseconds>(stop3 - start3);
-    // cout  << "one level 3: " << duration3.count() << "ms" << endl;
+    auto duration3 = duration_cast<milliseconds>(stop3 - start3);
+    cout << "one level 3: " << duration3.count() << "ms" << endl;
     auto start4 = high_resolution_clock::now();
     // random node sequence
     vector<int> rand_nodes;
@@ -119,25 +119,25 @@ OneLevel _one_level(
     int nb_moves = 1;
     bool improvement = false;
     auto stop4 = high_resolution_clock::now();
-    auto duration4 = duration_cast<microseconds>(stop4 - start4);
-    // cout  << "one level 4: " << duration4.count() << "micro s" << endl;
+    auto duration4 = duration_cast<milliseconds>(stop4 - start4);
+    cout << "one level 4: " << duration4.count() << "ms" << endl;
     while (nb_moves > 0) {
         nb_moves = 0;
-        duration1 = duration_cast<microseconds>(start1 - start1);
-        duration2 = duration_cast<microseconds>(start1 - start1);
-        duration3 = duration_cast<microseconds>(start1 - start1);
+        duration1 = duration_cast<milliseconds>(start1 - start1);
+        duration2 = duration_cast<milliseconds>(start1 - start1);
+        duration3 = duration_cast<milliseconds>(start1 - start1);
         for (int u : rand_nodes) {
 
             start1 = high_resolution_clock::now();
             double best_mod = 0;
             int best_com = node2com[u];
             NodeDoubleDict weights2com = _neighbor_weights(nbrs[u], node2com);
-            // cout  << "weights2com: " << weights2com << endl;
-            // cout  << "degrees: " << degrees[u] << endl;
+            // cout << "weights2com: " << weights2com << endl;
+            // cout << "degrees: " << degrees[u] << endl;
             auto degree = degrees[u];
             stot[best_com] -= degree;
             stop1 = high_resolution_clock::now();
-            duration1 += duration_cast<microseconds>(stop1 - start1);
+            duration1 += duration_cast<milliseconds>(stop1 - start1);
 
             start2 = high_resolution_clock::now();
             for (auto [nbr_com, wt] : weights2com) {
@@ -148,7 +148,7 @@ OneLevel _one_level(
                 }
             }
             stop2 = high_resolution_clock::now();
-            duration2 += duration_cast<microseconds>(stop2 - start2);
+            duration2 += duration_cast<milliseconds>(stop2 - start2);
 
             start3 = high_resolution_clock::now();
             stot[best_com] += degree;
@@ -161,11 +161,11 @@ OneLevel _one_level(
                 node2com[u] = best_com;
             }
             stop3 = high_resolution_clock::now();
-            duration3 += duration_cast<microseconds>(stop3 - start3);
+            duration3 += duration_cast<milliseconds>(stop3 - start3);
         }
-        // cout  << "one level 1: " << duration1.count() << "micro s" << endl;
-        // cout  << "one level 2: " << duration2.count() << "micro s" << endl;
-        // cout  << "one level 3: " << duration3.count() << "micro s" << endl;
+        cout << "one level 5: " << duration1.count() << "ms" << endl;
+        cout << "one level 6: " << duration2.count() << "ms" << endl;
+        cout << "one level 7: " << duration3.count() << "ms" << endl;
     }
     vector<unordered_set<int>> new_partition;
     vector<unordered_set<int>> new_inner_partition;
