@@ -4,10 +4,8 @@
 Graph read_undirected_file(string path)
 {
     ifstream file(path);
-    if (!file.good()) {
-        cerr << "Error: " << strerror(errno);
+    if (!file.good())
         throw NxCppError();
-    }
 
     Graph g;
     int u, v;
