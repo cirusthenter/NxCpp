@@ -23,7 +23,6 @@ vector<vector<unordered_set<int>>> louvain_partitions(
     bool has_seed = false,
     int seed = 0)
 {
-    cout << "file read" << endl;
     vector<unordered_set<int>> partition;
     for (auto [u, attr] : g.nodes())
         partition.push_back(unordered_set<int>({ u }));
@@ -39,26 +38,23 @@ vector<vector<unordered_set<int>>> louvain_partitions(
     partition = res.partition;
     vector<unordered_set<int>> inner_partition = res.inner_partition;
     bool improvement = res.improvement;
-
     vector<vector<unordered_set<int>>> partitions;
-
     partitions.push_back(partition);
+
     while (improvement) {
         double new_mod = modularity(graph, inner_partition, weight = "weight", resolution);
-        cout << mod << " ----> " << new_mod << endl;
         if (new_mod - mod <= threshold)
             break;
+        mod = new_mod;
         auto graph_comnodes = _gen_graph(graph, inner_partition, com_nodes);
         graph = graph_comnodes.first;
         com_nodes = graph_comnodes.second;
-        res = _one_level(graph, com_nodes, m, resolution, has_seed, seed);
 
+        res = _one_level(graph, com_nodes, m, resolution, has_seed, seed);
         partition = res.partition;
         inner_partition = res.inner_partition;
         improvement = res.improvement;
-        mod = new_mod;
-        if (improvement)
-            partitions.push_back(partition);
+        partitions.push_back(partition);
     }
     return partitions;
 }
@@ -73,28 +69,20 @@ OneLevel _one_level(
 {
     auto start1 = high_resolution_clock::now();
     unordered_map<int, int> node2com;
-    vector<unordered_set<int>> inner_partition;
+    unordered_map<int, unordered_set<int>> inner_partition;
     const string weight = "weight";
     auto degrees = g.degree(weight);
-    auto stop1 = high_resolution_clock::now();
-    auto duration1 = duration_cast<milliseconds>(stop1 - start1);
-    cout << "one level 1: " << duration1.count() << "ms" << endl;
-    auto start2 = high_resolution_clock::now();
     NodeDoubleDict stot;
     {
         int com_id = 0;
         for (auto [u, attr] : g.nodes()) {
             node2com[u] = com_id;
+            inner_partition[com_id] = unordered_set<int>({ u });
+            stot[com_id] = degrees[u];
             ++com_id;
-            inner_partition.push_back(unordered_set<int>({ u }));
-            stot[u] = degrees[u];
         }
     }
-    auto stop2 = high_resolution_clock::now();
-    auto duration2 = duration_cast<milliseconds>(stop2 - start2);
-    cout << "one level 2: " << duration2.count() << "ms" << endl;
 
-    auto start3 = high_resolution_clock::now();
     unordered_map<int, unordered_map<int, double>> nbrs;
     for (auto [u, neighbors] : g.adjacency()) {
         nbrs[u] = unordered_map<int, double>();
@@ -107,10 +95,6 @@ OneLevel _one_level(
                 nbrs[u][v] = 1;
         }
     }
-    auto stop3 = high_resolution_clock::now();
-    auto duration3 = duration_cast<milliseconds>(stop3 - start3);
-    cout << "one level 3: " << duration3.count() << "ms" << endl;
-    auto start4 = high_resolution_clock::now();
     // random node sequence
     vector<int> rand_nodes;
     for (auto [u, attr] : g.nodes())
@@ -118,39 +102,28 @@ OneLevel _one_level(
     shuffle_vector(rand_nodes, has_seed, seed);
     int nb_moves = 1;
     bool improvement = false;
-    auto stop4 = high_resolution_clock::now();
-    auto duration4 = duration_cast<milliseconds>(stop4 - start4);
-    cout << "one level 4: " << duration4.count() << "ms" << endl;
+
+    auto start_other = high_resolution_clock::now();
     while (nb_moves > 0) {
         nb_moves = 0;
-        duration1 = duration_cast<milliseconds>(start1 - start1);
-        duration2 = duration_cast<milliseconds>(start1 - start1);
-        duration3 = duration_cast<milliseconds>(start1 - start1);
         for (int u : rand_nodes) {
-
-            start1 = high_resolution_clock::now();
             double best_mod = 0;
             int best_com = node2com[u];
             NodeDoubleDict weights2com = _neighbor_weights(nbrs[u], node2com);
-            // cout << "weights2com: " << weights2com << endl;
-            // cout << "degrees: " << degrees[u] << endl;
             auto degree = degrees[u];
             stot[best_com] -= degree;
-            stop1 = high_resolution_clock::now();
-            duration1 += duration_cast<milliseconds>(stop1 - start1);
 
-            start2 = high_resolution_clock::now();
             for (auto [nbr_com, wt] : weights2com) {
                 double gain = 2 * wt - resolution * (stot[nbr_com] * degree) / m;
                 if (gain > best_mod) {
                     best_mod = gain;
                     best_com = nbr_com;
+                    continue;
+                } else if (gain == best_mod && nbr_com < best_com) {
+                    best_com = nbr_com;
                 }
             }
-            stop2 = high_resolution_clock::now();
-            duration2 += duration_cast<milliseconds>(stop2 - start2);
 
-            start3 = high_resolution_clock::now();
             stot[best_com] += degree;
             if (best_com != node2com[u]) {
                 auto com = com_nodes[u];
@@ -160,21 +133,15 @@ OneLevel _one_level(
                 ++nb_moves;
                 node2com[u] = best_com;
             }
-            stop3 = high_resolution_clock::now();
-            duration3 += duration_cast<milliseconds>(stop3 - start3);
         }
-        cout << "one level 5: " << duration1.count() << "ms" << endl;
-        cout << "one level 6: " << duration2.count() << "ms" << endl;
-        cout << "one level 7: " << duration3.count() << "ms" << endl;
     }
     vector<unordered_set<int>> new_partition;
+    for (auto [nd, atr] : com_nodes)
+        new_partition.push_back(atr);
     vector<unordered_set<int>> new_inner_partition;
-    for (auto s : inner_partition)
+    for (auto [u, s] : inner_partition)
         if (s.size() > 0)
             new_inner_partition.push_back(s);
-    for (auto [nd, atr] : com_nodes) {
-        new_partition.push_back(atr);
-    }
     return OneLevel(new_partition, new_inner_partition, improvement);
 }
 

@@ -38,10 +38,3 @@ TEST_F(TestLouvain, TestPartition)
     cout << "modularity: " << modularity(g, partition) << endl;
     ASSERT_TRUE(is_partition(g, partition));
 }
-
-TEST_F(TestLouvain, TestReadFile)
-{
-    Graph g = read_file("graph/com-amazon-connected.gr");
-    vector<unordered_set<int>> partition = louvain_communities(g);
-    cout << "modularity: " << modularity(g, partition) << endl;
-}

@@ -26,7 +26,6 @@ double modularity(Graph g, vector<unordered_set<int>> communities, string weight
 
     auto stop1 = high_resolution_clock::now();
     auto duration1 = duration_cast<milliseconds>(stop1 - start1);
-    cout << "modularity 1: " << duration1.count() << "ms" << endl;
     auto start2 = high_resolution_clock::now();
     double q = 0;
 
@@ -59,7 +58,6 @@ double modularity(Graph g, vector<unordered_set<int>> communities, string weight
     }
     auto stop2 = high_resolution_clock::now();
     auto duration2 = duration_cast<milliseconds>(stop2 - start2);
-    cout << "modularity 2: " << duration1.count() << "ms" << endl;
 
     return q;
 }
