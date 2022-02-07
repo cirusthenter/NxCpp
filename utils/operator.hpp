@@ -1,8 +1,5 @@
 #pragma once
-#include <iostream>
-#include <unordered_map>
-#include <unordered_set>
-#include <vector>
+#include "operator.h"
 
 template <class T>
 std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
@@ -28,6 +25,15 @@ void update_map(std::unordered_map<K, V>& m,
         m[p.first] = p.second;
 }
 
+template <typename K, typename V>
+std::vector<K> convert_mapkey_to_vector(std::unordered_map<K, V> m)
+{
+    std::vector<K> vec;
+    for (auto [k, v] : m)
+        vec.push_back(k);
+    return vec;
+}
+
 template <typename V>
 std::vector<V> convert_set_to_vector(std::unordered_set<V> s)
 {
@@ -47,16 +53,34 @@ std::unordered_set<K> convert_map_to_set(std::unordered_map<K, V> m)
 }
 
 template <typename K1, typename K2, typename V>
-std::unordered_map<K1, unordered_set<K2>> convert_mapmap_to_mapset(std::unordered_map<K1, std::unordered_map<K2, V>> m)
+std::unordered_map<K1, std::unordered_set<K2>> convert_mapmap_to_mapset(std::unordered_map<K1, std::unordered_map<K2, V>> m)
 {
-    std::unordered_map<K1, unordered_set<K2>> s;
+    std::unordered_map<K1, std::unordered_set<K2>> s;
     for (auto [k1, k2_v] : m) {
-        s[k1] = unordered_set<K2>();
+        s[k1] = std::unordered_set<K2>();
         for (auto [k2, v] : k2_v) {
             s[k1].insert(k2);
         }
     }
     return s;
+}
+
+template <typename K, typename V1, typename V2>
+std::unordered_map<K, V2> fromkeys(std::unordered_map<K, V1> m, V2 v)
+{
+    std::unordered_map<K, V2> n;
+    for (auto [k, v_old] : m) {
+        n[k] = v;
+    }
+    return n;
+}
+
+template <typename K, typename V>
+V dict_get(std::unordered_map<K, V>& m, K k, V v)
+{
+    if (in(m, k))
+        return m[k];
+    return v;
 }
 
 template <typename K>

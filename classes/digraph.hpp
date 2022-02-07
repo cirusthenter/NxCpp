@@ -261,6 +261,14 @@ public:
         return sum_weight;
     }
 
+    NodeDoubleDict out_degree(string weight = "")
+    {
+        NodeDoubleDict degree_dict;
+        for (auto [nd, attr] : nodes())
+            degree_dict[nd] = out_degree(nd, weight);
+        return degree_dict;
+    }
+
     pair<double, double> degree(int n, string weight = "")
     {
         // (in_degree, out_degree)

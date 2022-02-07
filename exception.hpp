@@ -124,9 +124,10 @@ class PowerIterationFailedConvergence : ExceededMaxIterations {
      `num_iterations` is the number of iterations that have been
      completed when this exception was raised.
     */
+};
 
-    PowerIterationFailedConvergence(int num_iterations)
-    {
-        NotImplementedException();
-    }
+class ZeroDivisionError : NxCppException {
+    /*
+    Raised if a value is devided by zero.
+    */
 };

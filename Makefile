@@ -16,6 +16,6 @@ fast:
 	cd build && ctest
 
 manual_test:
-	$(CC) $(CFLAGS) -o manual_test -pthread -lgtest_main -lgtest readwrite/tests/test_read_file.cc
+	$(CC) $(CFLAGS) -o manual_test -pthread -lgtest_main -lgtest algorithms/link_analysis/tests/test_pagerank_alg.cc
 	./manual_test
 	rm manual_test
