@@ -1,6 +1,6 @@
-# Implemented Algorithms/Generators
+# Implemented Algorithms and Generators
 
-List of algorithms/generators that are implemented.
+List of algorithms and generators that are implemented.
 
 ## Algorithms
 
