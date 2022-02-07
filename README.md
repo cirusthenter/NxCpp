@@ -11,6 +11,10 @@ According to [NetworkX](https://github.com/networkx/networkx), NetworkX is a Pyt
 - **Tutorial:** https://networkx.org/documentation/latest/tutorial.html
 - **GitHub Discussions:** https://github.com/networkx/networkx/discussions
 
+## Implemented Algorithms and Generators
+
+See [Implemented Algorithms and Generators](https://github.com/cirusthenter/NxCpp/blob/main/IMPLEMENTED.md).
+
 ## Install
 
 NxCpp needs: 
