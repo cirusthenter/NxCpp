@@ -1,3 +1,4 @@
+#pragma once
 #include "unweighted.h"
 
 NodeDoubleDict single_source_shortest_path_length(Graph g, int source, double cutoff = DBL_MAX)
@@ -41,7 +42,7 @@ NodeDoubleDict _single_shortest_path_length(OuterAdjDict adj, unordered_map<int,
                 found.push_back(v);
             }
         }
-        if (seen.size() == (unsigned int) n)
+        if (seen.size() == (unsigned int)n)
             return seen;
         for (auto v : found)
             for (auto [n, nbr] : adj[v])
