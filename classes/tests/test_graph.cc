@@ -167,6 +167,30 @@ TEST_F(TestGraph, TestAdjacency)
     ASSERT_EQ(adj, expected);
 }
 
+TEST_F(TestGraph, TestSubgraph)
+{
+    Graph g = k3;
+    Graph h = g.subgraph(unordered_set<int>({ 0, 1, 2, 5 }));
+    OuterAdjDict adj = h.adjacency();
+    OuterAdjDict expected({ { 0, AdjDict({ { 1, AttrDict() }, { 2, AttrDict() } }) },
+        { 1, AdjDict({ { 0, AttrDict() }, { 2, AttrDict() } }) },
+        { 2, AdjDict({ { 0, AttrDict() }, { 1, AttrDict() } }) } });
+    ASSERT_EQ(adj, expected);
+
+    Graph h2 = g.subgraph(unordered_set<int>({ 0 }));
+    OuterAdjDict adj2 = h2.adjacency();
+    OuterAdjDict expected2({ { 0, AdjDict() } });
+    ASSERT_EQ(adj2, expected2);
+
+    Graph h3 = g.subgraph(unordered_set<int>({ 0, 1 }));
+    OuterAdjDict adj3 = h3.adjacency();
+    OuterAdjDict expected3({
+        { 0, AdjDict({ { 1, AttrDict() } }) },
+        { 1, AdjDict({ { 0, AttrDict() } }) },
+    });
+    ASSERT_EQ(adj3, expected3);
+}
+
 TEST_F(TestGraph, TestAddNode)
 {
     Graph g = Graph();

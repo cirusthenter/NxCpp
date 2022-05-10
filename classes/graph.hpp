@@ -362,4 +362,20 @@ public:
     {
         return AttrDict();
     }
+
+    Graph subgraph(unordered_set<Node> nodes)
+    {
+        Graph newg;
+        for (auto nd : nodes) {
+            if (!has_node(nd))
+                continue;
+            newg.add_node(nd, get_node_data(nd));
+            for (auto [nbr, attr] : neighbors(nd)) {
+                if (in(nodes, nbr))
+                    newg.add_edge(nd, nbr, attr);
+            }
+        }
+
+        return newg;
+    }
 };
