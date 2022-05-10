@@ -330,4 +330,20 @@ public:
     {
         throw NotImplementedException();
     }
+
+    DiGraph subgraph(unordered_set<Node> nodes)
+    {
+        DiGraph newg;
+        for (auto nd : nodes) {
+            if (!has_node(nd))
+                continue;
+            newg.add_node(nd, get_node_data(nd));
+            for (auto [nbr, attr] : successors(nd)) {
+                if (in(nodes, nbr))
+                    newg.add_edge(nd, nbr, attr);
+            }
+        }
+
+        return newg;
+    }
 };
