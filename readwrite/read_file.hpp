@@ -14,3 +14,17 @@ Graph read_undirected_file(string path)
 
     return g;
 }
+
+DiGraph read_directed_file(string path)
+{
+    ifstream file(path);
+    if (!file.good())
+        throw NxCppError();
+
+    DiGraph g;
+    int u, v;
+    while (file >> u >> v)
+        g.add_edge(u, v);
+
+    return g;
+}
